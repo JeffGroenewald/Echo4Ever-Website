@@ -6,6 +6,16 @@
 			"type": "shell",
 			"command": "npm run dev",
 			"isBackground": true
+		},
+		{
+			"label": "Git commit all changes",
+			"type": "shell",
+			"command": "cd \"c:\\Users\\JK-User\\OneDrive\\Documents\\GitHub\\echo4ever-website\" && git add -A && git commit -m \"Add SVG icons, footer redesign, country-based pricing, mobile responsiveness, Legacy rename\""
+		},
+		{
+			"label": "Git commit",
+			"type": "shell",
+			"command": "cd 'c:\\Users\\JK-User\\OneDrive\\Documents\\GitHub\\echo4ever-website'; git add -A; git commit -m 'Add SVG icons, footer redesign, country-based pricing, mobile responsiveness, Legacy rename'"
 		}
 	]
 }

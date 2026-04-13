@@ -345,7 +345,8 @@ p:last-child {
 }
 
 .pricing-storage {
-  font-size: var(--font-size-caption);
+  font-size: 30px;
+  font-weight: 700;
   color: var(--color-text-secondary);
   margin-bottom: 8px;
 }
@@ -437,6 +438,14 @@ p:last-child {
     padding: 80px 0 60px;
   }
 
+  .grid--3 {
+    grid-template-columns: 1fr;
+  }
+
+  .grid--2 {
+    grid-template-columns: 1fr;
+  }
+
   .privacy-block {
     flex-direction: column;
     gap: 12px;
@@ -444,5 +453,9 @@ p:last-child {
 
   .watermark {
     width: 400px;
+  }
+
+  .cta-banner p {
+    max-width: 100%;
   }
 }
