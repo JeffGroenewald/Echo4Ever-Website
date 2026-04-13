@@ -16,6 +16,16 @@
 			"label": "Git commit",
 			"type": "shell",
 			"command": "cd 'c:\\Users\\JK-User\\OneDrive\\Documents\\GitHub\\echo4ever-website'; git add -A; git commit -m 'Add SVG icons, footer redesign, country-based pricing, mobile responsiveness, Legacy rename'"
+		},
+		{
+			"label": "Git push",
+			"type": "shell",
+			"command": "cd 'c:\\Users\\JK-User\\OneDrive\\Documents\\GitHub\\echo4ever-website'; git push"
+		},
+		{
+			"label": "Git commit and push",
+			"type": "shell",
+			"command": "cd 'c:\\Users\\JK-User\\OneDrive\\Documents\\GitHub\\echo4ever-website'; git add -A; git commit -m 'Update VS Code tasks config'; git push"
 		}
 	]
 }
