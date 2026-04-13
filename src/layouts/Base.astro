@@ -1,0 +1,253 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'Echo4Ever — Your private digital memory vault. Preserve photos, videos, documents, and life stories for the people who matter most.' } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body>
+    <img src="/images/nautilus-blueprint.jpg" alt="" class="watermark" aria-hidden="true" />
+
+    <header class="site-header">
+      <div class="container site-header__inner">
+        <a href="/" class="site-logo">Echo4Ever</a>
+        <button class="hamburger" id="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <nav class="site-nav" id="site-nav">
+          <a href="/features">Features</a>
+          <a href="/pricing">Pricing</a>
+          <a href="/privacy">Privacy</a>
+          <a href="https://app.echo4ever.com" class="btn btn--primary btn--nav">Get Started</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="container site-footer__inner">
+        <div class="site-footer__brand">
+          <span class="site-logo">Echo4Ever</span>
+          <p class="text-secondary">Every life has a story worth keeping.</p>
+        </div>
+        <div class="site-footer__links">
+          <div>
+            <h4>Product</h4>
+            <a href="/features">Features</a>
+            <a href="/pricing">Pricing</a>
+            <a href="/privacy">Privacy</a>
+          </div>
+          <div>
+            <h4>Legal</h4>
+            <a href="/terms">Terms of Service</a>
+            <a href="/privacy-policy">Privacy Policy</a>
+          </div>
+          <div>
+            <h4>Account</h4>
+            <a href="https://app.echo4ever.com">Sign In</a>
+            <a href="https://app.echo4ever.com/signup">Create Account</a>
+          </div>
+        </div>
+        <div class="site-footer__bottom">
+          <p class="text-secondary">&copy; {new Date().getFullYear()} Echo4Ever. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const toggle = document.getElementById('menu-toggle');
+      const nav = document.getElementById('site-nav');
+      if (toggle && nav) {
+        toggle.addEventListener('click', () => {
+          const expanded = toggle.getAttribute('aria-expanded') === 'true';
+          toggle.setAttribute('aria-expanded', String(!expanded));
+          nav.classList.toggle('open');
+          toggle.classList.toggle('open');
+        });
+      }
+    </script>
+
+    <style is:global>
+      @import '../styles/global.css';
+
+      /* ─── Header ─── */
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: var(--color-bg);
+        border-bottom: 1px solid var(--color-border);
+      }
+
+      .site-header__inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 72px;
+      }
+
+      .site-logo {
+        font-family: var(--font-display);
+        font-size: 24px;
+        color: var(--color-accent);
+        text-decoration: none;
+        font-weight: 400;
+        letter-spacing: -0.01em;
+      }
+
+      .site-nav {
+        display: flex;
+        align-items: center;
+        gap: 32px;
+      }
+
+      .site-nav a {
+        font-family: var(--font-body);
+        font-size: var(--font-size-nav);
+        font-weight: 500;
+        color: var(--color-text-secondary);
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+
+      .site-nav a:hover {
+        color: var(--color-accent);
+        opacity: 1;
+      }
+
+      .btn--nav {
+        font-size: 14px !important;
+        padding: 10px 24px !important;
+      }
+
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 4px;
+        z-index: 101;
+      }
+
+      .hamburger span {
+        display: block;
+        width: 24px;
+        height: 2px;
+        background: var(--color-text-primary);
+        transition: transform 0.3s, opacity 0.3s;
+      }
+
+      .hamburger.open span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+      }
+
+      .hamburger.open span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .hamburger.open span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+      }
+
+      @media (max-width: 768px) {
+        .hamburger {
+          display: flex;
+        }
+
+        .site-nav {
+          position: fixed;
+          top: 72px;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: var(--color-bg);
+          flex-direction: column;
+          align-items: center;
+          justify-content: flex-start;
+          padding-top: 48px;
+          gap: 24px;
+          transform: translateX(100%);
+          transition: transform 0.3s ease;
+        }
+
+        .site-nav.open {
+          transform: translateX(0);
+        }
+
+        .site-nav a {
+          font-size: 20px;
+        }
+      }
+
+      /* ─── Footer ─── */
+      .site-footer {
+        border-top: 1px solid var(--color-border);
+        padding: 60px 0 32px;
+        margin-top: 0;
+      }
+
+      .site-footer__inner {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+      }
+
+      .site-footer__brand p {
+        margin-top: 8px;
+        font-size: var(--font-size-caption);
+      }
+
+      .site-footer__links {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 32px;
+      }
+
+      .site-footer__links h4 {
+        font-family: var(--font-body);
+        font-size: var(--font-size-caption);
+        font-weight: 600;
+        color: var(--color-text-primary);
+        margin-bottom: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+
+      .site-footer__links a {
+        display: block;
+        font-size: var(--font-size-caption);
+        color: var(--color-text-secondary);
+        padding: 4px 0;
+        text-decoration: none;
+      }
+
+      .site-footer__links a:hover {
+        color: var(--color-accent);
+      }
+
+      .site-footer__bottom {
+        border-top: 1px solid var(--color-border);
+        padding-top: 24px;
+        font-size: 13px;
+      }
+    </style>
+  </body>
+</html>

@@ -1,0 +1,265 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="Pricing — Echo4Ever" description="Simple, honest pricing. Three plans, all features included. Choose the storage you need.">
+
+  <section class="page-header">
+    <div class="container">
+      <h1>Simple, honest pricing</h1>
+      <p>All plans include every feature. Choose the storage that fits your life.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+
+      <!-- Billing toggle -->
+      <div class="billing-toggle text-center">
+        <button class="billing-btn active" data-interval="month">Monthly</button>
+        <button class="billing-btn" data-interval="year">Yearly <span class="billing-save">Save ~2 months</span></button>
+      </div>
+
+      <!-- Currency selector -->
+      <div class="currency-select text-center">
+        <label for="currency" class="text-secondary">Show prices in:</label>
+        <select id="currency">
+          <option value="NZD" selected>NZD $</option>
+          <option value="USD">USD $</option>
+          <option value="AUD">AUD $</option>
+        </select>
+      </div>
+
+      <div class="grid grid--3 pricing-grid">
+
+        <!-- Foundation -->
+        <div class="pricing-card">
+          <h3>Foundation</h3>
+          <p class="pricing-storage">25 GB storage</p>
+          <div class="pricing-price" data-prices='{"NZD":{"month":"28.99","year":"347.66"},"USD":{"month":"16.99","year":"203.66"},"AUD":{"month":"23.99","year":"287.66"}}'>
+            $28.99
+          </div>
+          <p class="pricing-interval">per month</p>
+          <ul class="pricing-features">
+            <li>Photo, video &amp; audio uploads</li>
+            <li>Document storage</li>
+            <li>Life Story with prompts</li>
+            <li>Family Tree builder</li>
+            <li>Family sharing</li>
+            <li>Time capsules</li>
+            <li>Digital legacy planning</li>
+          </ul>
+          <a href="https://app.echo4ever.com/signup" class="btn btn--outline">Get Started</a>
+        </div>
+
+        <!-- Legacy -->
+        <div class="pricing-card pricing-card--popular">
+          <span class="pricing-badge">Most Popular</span>
+          <h3>Legacy</h3>
+          <p class="pricing-storage">100 GB storage</p>
+          <div class="pricing-price" data-prices='{"NZD":{"month":"32.99","year":"395.66"},"USD":{"month":"17.99","year":"215.66"},"AUD":{"month":"26.99","year":"323.66"}}'>
+            $32.99
+          </div>
+          <p class="pricing-interval">per month</p>
+          <ul class="pricing-features">
+            <li>Photo, video &amp; audio uploads</li>
+            <li>Document storage</li>
+            <li>Life Story with prompts</li>
+            <li>Family Tree builder</li>
+            <li>Family sharing</li>
+            <li>Time capsules</li>
+            <li>Digital legacy planning</li>
+          </ul>
+          <a href="https://app.echo4ever.com/signup" class="btn btn--primary">Get Started</a>
+        </div>
+
+        <!-- Generations -->
+        <div class="pricing-card">
+          <h3>Generations</h3>
+          <p class="pricing-storage">250 GB storage</p>
+          <div class="pricing-price" data-prices='{"NZD":{"month":"35.99","year":"431.66"},"USD":{"month":"23.99","year":"287.66"},"AUD":{"month":"31.99","year":"383.66"}}'>
+            $35.99
+          </div>
+          <p class="pricing-interval">per month</p>
+          <ul class="pricing-features">
+            <li>Photo, video &amp; audio uploads</li>
+            <li>Document storage</li>
+            <li>Life Story with prompts</li>
+            <li>Family Tree builder</li>
+            <li>Family sharing</li>
+            <li>Time capsules</li>
+            <li>Digital legacy planning</li>
+          </ul>
+          <a href="https://app.echo4ever.com/signup" class="btn btn--outline">Get Started</a>
+        </div>
+
+      </div>
+
+      <p class="text-center text-secondary" style="margin-top: 40px; font-size: var(--font-size-caption);">
+        All plans include every feature. The only difference is storage. Upgrade or downgrade any time.
+      </p>
+
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section section--alt">
+    <div class="container" style="max-width: 720px;">
+      <h2 class="text-center" style="margin-bottom: 40px;">Common questions</h2>
+
+      <div class="faq-item">
+        <h3>Can I change my plan later?</h3>
+        <p class="text-secondary">Absolutely. Upgrade or downgrade at any time from your account settings. Changes are prorated — you only pay the difference.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>What file types can I upload?</h3>
+        <p class="text-secondary">Photos (JPG, PNG, GIF), videos (MP4, MOV), audio (MP3, M4A, WAV), and documents (PDF, DOC, DOCX). Up to 500 MB per file.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Who can see my memories?</h3>
+        <p class="text-secondary">Only you — unless you choose to share. Every memory starts private. There are no public profiles, no social feeds, and no algorithms.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>What is a Heritage Custodian?</h3>
+        <p class="text-secondary">Someone you trust to manage your digital legacy. When the time comes, they can activate your account so the memories you've chosen are shared with the people you've named.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Can I cancel any time?</h3>
+        <p class="text-secondary">Yes. No contracts, no penalties. Cancel from your account settings and you'll keep access until the end of your billing period.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-banner">
+    <div class="container">
+      <h2>Start preserving what matters</h2>
+      <p>Your memories deserve a proper home. Pick a plan and begin today.</p>
+      <a href="https://app.echo4ever.com/signup" class="btn btn--primary btn--large">Create Your Archive</a>
+    </div>
+  </section>
+
+</Base>
+
+<style>
+  .billing-toggle {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    margin-bottom: 24px;
+  }
+
+  .billing-btn {
+    font-family: var(--font-body);
+    font-size: var(--font-size-caption);
+    font-weight: 600;
+    padding: 10px 24px;
+    border: 1px solid var(--color-border);
+    background: transparent;
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .billing-btn:first-child {
+    border-radius: 20px 0 0 20px;
+  }
+
+  .billing-btn:last-child {
+    border-radius: 0 20px 20px 0;
+    border-left: none;
+  }
+
+  .billing-btn.active {
+    background: var(--color-accent);
+    color: var(--color-accent-text);
+    border-color: var(--color-accent);
+  }
+
+  .billing-save {
+    font-size: 11px;
+    font-weight: 400;
+    opacity: 0.8;
+  }
+
+  .currency-select {
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .currency-select label {
+    font-size: var(--font-size-caption);
+  }
+
+  .currency-select select {
+    font-family: var(--font-body);
+    font-size: var(--font-size-caption);
+    padding: 6px 12px;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    background: var(--color-surface);
+    color: var(--color-text-primary);
+    cursor: pointer;
+  }
+
+  .pricing-grid {
+    align-items: start;
+  }
+
+  .faq-item {
+    padding: 24px 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .faq-item:first-of-type {
+    border-top: 1px solid var(--color-border);
+  }
+
+  .faq-item h3 {
+    margin-bottom: 8px;
+    font-size: var(--font-size-subheading);
+  }
+
+  .faq-item p {
+    margin: 0;
+  }
+</style>
+
+<script>
+  const symbols: Record<string, string> = { NZD: '$', USD: '$', AUD: '$' };
+
+  function updatePrices() {
+    const currency = (document.getElementById('currency') as HTMLSelectElement).value;
+    const interval = document.querySelector('.billing-btn.active')?.getAttribute('data-interval') || 'month';
+    const sym = symbols[currency] || '$';
+
+    document.querySelectorAll('.pricing-price').forEach((el) => {
+      const prices = JSON.parse(el.getAttribute('data-prices') || '{}');
+      const price = prices[currency]?.[interval];
+      if (price) {
+        el.textContent = `${sym}${price}`;
+      }
+    });
+
+    document.querySelectorAll('.pricing-interval').forEach((el) => {
+      el.textContent = interval === 'year' ? 'per year' : 'per month';
+    });
+  }
+
+  document.querySelectorAll('.billing-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.billing-btn').forEach((b) => b.classList.remove('active'));
+      btn.classList.add('active');
+      updatePrices();
+    });
+  });
+
+  document.getElementById('currency')?.addEventListener('change', updatePrices);
+</script>
