@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <radialGradient id="bg3" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#e8e4d8"/>
+      <stop offset="100%" stop-color="#d8d4c8"/>
+    </radialGradient>
+    <radialGradient id="scroll" cx="40%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#f5f2ec"/>
+      <stop offset="100%" stop-color="#d5d0c5"/>
+    </radialGradient>
+    <radialGradient id="seal" cx="45%" cy="35%" r="60%">
+      <stop offset="0%" stop-color="#e0ddd5"/>
+      <stop offset="100%" stop-color="#a8a59c"/>
+    </radialGradient>
+    <filter id="shadow3" x="-20%" y="-10%" width="140%" height="140%">
+      <feDropShadow dx="4" dy="8" stdDeviation="12" flood-color="#a0a090" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+  <rect width="400" height="400" fill="url(#bg3)"/>
+  <g filter="url(#shadow3)">
+    <!-- Scroll body -->
+    <rect x="135" y="110" width="130" height="180" rx="8" fill="url(#scroll)"/>
+    <!-- Scroll top curl -->
+    <ellipse cx="200" cy="115" rx="75" ry="18" fill="url(#scroll)"/>
+    <!-- Scroll bottom curl -->
+    <ellipse cx="200" cy="285" rx="75" ry="18" fill="url(#scroll)"/>
+    <!-- Seal/stamp circle -->
+    <circle cx="230" cy="270" r="28" fill="url(#seal)"/>
+    <circle cx="230" cy="270" r="18" fill="#d0cdc5"/>
+    <!-- Star in seal -->
+    <polygon points="230,257 233,265 242,265 235,270 237,278 230,274 223,278 225,270 218,265 227,265" fill="#c0bdb5"/>
+    <!-- Text lines -->
+    <line x1="160" y1="155" x2="240" y2="155" stroke="#ccc8bc" stroke-width="4" stroke-linecap="round"/>
+    <line x1="160" y1="175" x2="230" y2="175" stroke="#ccc8bc" stroke-width="4" stroke-linecap="round"/>
+    <line x1="160" y1="195" x2="235" y2="195" stroke="#ccc8bc" stroke-width="4" stroke-linecap="round"/>
+    <line x1="160" y1="215" x2="220" y2="215" stroke="#ccc8bc" stroke-width="4" stroke-linecap="round"/>
+  </g>
+</svg>

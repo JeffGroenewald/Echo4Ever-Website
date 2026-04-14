@@ -7,7 +7,7 @@ import Base from '../layouts/Base.astro';
   <!-- Hero -->
   <section class="hero">
     <div class="container">
-      <h1>Every life has a story<br />worth keeping</h1>
+      <h1 style="font-size: 80px; font-weight: 700;">Every life has a story<br />worth keeping</h1>
       <p>Echo4Ever is your private digital memory vault. Preserve photos, videos, documents and life stories and control exactly who sees them and when.</p>
       <p class="text-secondary" style="margin: 0 auto 24px; font-size: var(--font-size-subheading);">We help you keep your family's precious photos, letters, videos and voice recordings safe in a private place online - so your family history can be passed down and enjoyed by your children and grandchildren for many years to come.</p>
       <div class="hero__actions">
@@ -15,43 +15,46 @@ import Base from '../layouts/Base.astro';
         <a href="/features" class="btn btn--outline btn--large">See How It Works</a>
       </div>
     </div>
+    <div class="hero__image">
+      <img src="/images/couple-walk.jpg" alt="A beautifully curated archive of memories and photographs" loading="eager" />
+    </div>
   </section>
 
   <!-- 6 Features Overview -->
   <section class="section section--alt">
     <div class="container">
-      <h2 class="text-center">Six ways to capture what matters</h2>
+      <h2 class="text-center" style="font-weight: 700;">Six ways to capture what matters</h2>
       <p class="text-center text-secondary" style="max-width: 560px; margin: 0 auto 48px;">
         Your memories deserve more than a phone gallery. Echo4Ever gives you a proper home for every part of your story.
       </p>
       <div class="grid grid--3">
         <div class="card card--feature">
-          <div class="feature-icon"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
+          <div class="feature-icon"><img src="/images/Life%20story.png" alt="Life Story" class="feature-icon__img" /></div>
           <h3>Life Story</h3>
           <p class="text-secondary">Write about your childhood, lessons learned and the people who shaped you. Gentle prompts help you get started.</p>
         </div>
         <div class="card card--feature">
-          <div class="feature-icon"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
+          <div class="feature-icon"><img src="/images/Family%20tree.png" alt="Family Tree" class="feature-icon__img" /></div>
           <h3>Family Tree</h3>
           <p class="text-secondary">Map out the people who made you. Add names, relationships and details and build it over time.</p>
         </div>
         <div class="card card--feature">
-          <div class="feature-icon"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
+          <div class="feature-icon"><img src="/images/Photogrpahs.png" alt="Photographs" class="feature-icon__img" /></div>
           <h3>Photographs</h3>
           <p class="text-secondary">Upload family portraits, holiday snaps, school photos - anything worth holding onto. Organised your way.</p>
         </div>
         <div class="card card--feature">
-          <div class="feature-icon"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg></div>
+          <div class="feature-icon"><img src="/images/Video.png" alt="Videos and Audio" class="feature-icon__img" /></div>
           <h3>Videos &amp; Audio</h3>
           <p class="text-secondary">A video of first steps. A recording of your grandmother singing. Your own voice, telling a story.</p>
         </div>
         <div class="card card--feature">
-          <div class="feature-icon"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></div>
+          <div class="feature-icon"><img src="/images/Documents.jpg" alt="Documents" class="feature-icon__img" /></div>
           <h3>Documents</h3>
           <p class="text-secondary">Birth certificates, handwritten letters, recipes, military records - the pieces that fill in the gaps.</p>
         </div>
         <div class="card card--feature">
-          <div class="feature-icon"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/><line x1="12" y1="11" x2="12" y2="17"/><line x1="9" y1="14" x2="15" y2="14"/></svg></div>
+          <div class="feature-icon"><img src="/images/Clocks.png" alt="Time Capsules" class="feature-icon__img" /></div>
           <h3>Time Capsules</h3>
           <p class="text-secondary">Seal a memory, set a date. A message for your son's 18th. A letter opened on your anniversary.</p>
         </div>
@@ -62,21 +65,21 @@ import Base from '../layouts/Base.astro';
   <!-- How It Works -->
   <section class="section">
     <div class="container">
-      <h2 class="text-center">Create. Share. Protect.</h2>
+      <h2 class="text-center" style="font-weight: 700;">Create. Share. Protect.</h2>
       <p class="text-center text-secondary" style="max-width: 600px; margin: 0 auto 48px;">
         Your archive grows with you - one memory at a time. Start small, build over time.
       </p>
       <div class="grid grid--3">
         <div class="card text-center">
-          <h3>Create</h3>
+          <h3 style="font-weight: 700;">Create</h3>
           <p class="text-secondary">Capture memories in whatever way feels natural - photos, words, video, audio, or documents. No structure required.</p>
         </div>
         <div class="card text-center">
-          <h3>Share</h3>
+          <h3 style="font-weight: 700;">Share</h3>
           <p class="text-secondary">Invite family to view the memories you choose. You pick the person, you pick the moment. Change your mind at any time.</p>
         </div>
         <div class="card text-center">
-          <h3>Protect</h3>
+          <h3 style="font-weight: 700;">Protect</h3>
           <p class="text-secondary">Appoint a Heritage Custodian. When the time comes, the memories you've chosen are shared with the people you've named.</p>
         </div>
       </div>
@@ -86,34 +89,47 @@ import Base from '../layouts/Base.astro';
   <!-- Privacy Promise -->
   <section class="section section--alt">
     <div class="container text-center">
-      <h2>Your memories. Your rules. Always.</h2>
+      <h2 style="font-weight: 700;">Your memories. Your rules. Always.</h2>
       <p class="text-secondary" style="max-width: 600px; margin: 0 auto 32px;">
         Every memory starts completely private. No public profiles. No social feeds. No algorithms. Your archive is yours and it stays that way.
       </p>
-      <div style="display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; margin-bottom: 32px;">
-        <div class="card" style="flex: 1; min-width: 200px; max-width: 280px; text-align: center;">
-          <strong>🔒 Private</strong>
-          <p class="text-secondary" style="margin-top: 8px; font-size: var(--font-size-caption);">Only you can see it. No one else. Ever.</p>
+      <div class="grid grid--3">
+        <div class="card text-center">
+          <div class="feature-icon"><img src="/images/icon-private.svg" alt="Private" class="feature-icon__img" /></div>
+          <h3 style="font-weight: 700;">Private</h3>
+          <p class="text-secondary">Only you can see it. No one else. Ever.</p>
         </div>
-        <div class="card" style="flex: 1; min-width: 200px; max-width: 280px; text-align: center;">
-          <strong>👨‍👩‍👧 Family</strong>
-          <p class="text-secondary" style="margin-top: 8px; font-size: var(--font-size-caption);">Shared with the family members you invite.</p>
+        <div class="card text-center">
+          <div class="feature-icon"><img src="/images/icon-family.svg" alt="Family" class="feature-icon__img" /></div>
+          <h3 style="font-weight: 700;">Family</h3>
+          <p class="text-secondary">Shared with the family members you invite.</p>
         </div>
-        <div class="card" style="flex: 1; min-width: 200px; max-width: 280px; text-align: center;">
-          <strong>⏰ Legacy</strong>
-          <p class="text-secondary" style="margin-top: 8px; font-size: var(--font-size-caption);">Kept safe until your legacy is activated by your Heritage Custodian. Your memories are shared with the people you've named - exactly as you intended.</p>
+        <div class="card text-center">
+          <div class="feature-icon"><img src="/images/icon-legacy.svg" alt="Legacy" class="feature-icon__img" /></div>
+          <h3 style="font-weight: 700;">Legacy</h3>
+          <p class="text-secondary">Kept safe until your Heritage Custodian shares it with the people you've named.</p>
         </div>
       </div>
-      <a href="/privacy" class="btn btn--outline">Learn About Our Privacy Promise</a>
+      <div style="margin-top: 32px;">
+        <a href="/privacy" class="btn btn--outline">Learn About Our Privacy Promise</a>
+      </div>
     </div>
   </section>
 
   <!-- CTA -->
   <section class="cta-banner">
-    <div class="container">
-      <h2>Start preserving what matters</h2>
-      <p>You don't need to do it all at once. Add a photo today. Write a paragraph next week. Your archive grows with you.</p>
-      <a href="https://app.echo4ever.com/signup" class="btn btn--primary btn--large">Create Your Archive</a>
+    <div class="container cta-banner__inner">
+      <div class="cta-banner__image">
+        <img src="/images/Baby%20feet.png" alt="Preserving family memories for generations" loading="lazy" />
+      </div>
+      <div class="cta-banner__content">
+        <h2>Start preserving what matters</h2>
+        <p>You don't need to do it all at once. Add a photo today. Write a paragraph next week. Your archive grows with you.</p>
+        <a href="https://app.echo4ever.com/signup" class="btn btn--primary btn--large">Create Your Archive</a>
+      </div>
+      <div class="cta-banner__image">
+        <img src="/images/Graduation.png" alt="A curated archive of memories" loading="lazy" />
+      </div>
     </div>
   </section>
 

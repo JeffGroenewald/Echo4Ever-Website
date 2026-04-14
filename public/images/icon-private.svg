@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#e8e4d8"/>
+      <stop offset="100%" stop-color="#d8d4c8"/>
+    </radialGradient>
+    <radialGradient id="shield" cx="40%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#f5f2ec"/>
+      <stop offset="100%" stop-color="#d5d0c5"/>
+    </radialGradient>
+    <radialGradient id="keyhole" cx="45%" cy="35%" r="60%">
+      <stop offset="0%" stop-color="#d8d5cc"/>
+      <stop offset="100%" stop-color="#a8a59c"/>
+    </radialGradient>
+    <filter id="shadow" x="-20%" y="-10%" width="140%" height="140%">
+      <feDropShadow dx="4" dy="8" stdDeviation="12" flood-color="#a0a090" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+  <rect width="400" height="400" fill="url(#bg)"/>
+  <g filter="url(#shadow)">
+    <!-- Shield shape -->
+    <path d="M200 100 L280 145 L280 230 Q280 300 200 330 Q120 300 120 230 L120 145 Z" fill="url(#shield)"/>
+    <!-- Keyhole circle -->
+    <circle cx="200" cy="205" r="24" fill="url(#keyhole)"/>
+    <!-- Keyhole slot -->
+    <rect x="192" y="220" width="16" height="35" rx="4" fill="url(#keyhole)"/>
+    <!-- Highlight -->
+    <circle cx="192" cy="198" r="6" fill="#eae8e0" opacity="0.6"/>
+  </g>
+</svg>

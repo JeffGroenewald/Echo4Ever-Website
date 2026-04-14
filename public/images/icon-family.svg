@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <radialGradient id="bg2" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#e8e4d8"/>
+      <stop offset="100%" stop-color="#d8d4c8"/>
+    </radialGradient>
+    <radialGradient id="person" cx="40%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#f0ede5"/>
+      <stop offset="100%" stop-color="#ccc8bc"/>
+    </radialGradient>
+    <radialGradient id="person2" cx="45%" cy="35%" r="60%">
+      <stop offset="0%" stop-color="#e0ddd5"/>
+      <stop offset="100%" stop-color="#b8b5ab"/>
+    </radialGradient>
+    <filter id="shadow2" x="-20%" y="-10%" width="140%" height="140%">
+      <feDropShadow dx="4" dy="8" stdDeviation="12" flood-color="#a0a090" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+  <rect width="400" height="400" fill="url(#bg2)"/>
+  <g filter="url(#shadow2)">
+    <!-- Left person -->
+    <circle cx="155" cy="160" r="28" fill="url(#person)"/>
+    <ellipse cx="155" cy="240" rx="38" ry="28" fill="url(#person)"/>
+    <!-- Right person -->
+    <circle cx="245" cy="160" r="28" fill="url(#person)"/>
+    <ellipse cx="245" cy="240" rx="38" ry="28" fill="url(#person)"/>
+    <!-- Child -->
+    <circle cx="200" cy="200" r="22" fill="url(#person2)"/>
+    <ellipse cx="200" cy="268" rx="30" ry="24" fill="url(#person2)"/>
+    <!-- Heart -->
+    <path d="M192 290 Q200 305 208 290 Q215 280 208 275 Q204 272 200 278 Q196 272 192 275 Q185 280 192 290Z" fill="#d5d0c5" opacity="0.7"/>
+  </g>
+</svg>
