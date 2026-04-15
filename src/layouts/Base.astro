@@ -43,7 +43,6 @@ const { title, description = 'Echo4Ever - Your private digital memory vault. Pre
           <div class="site-nav__links">
             <a href="/features">Features</a>
             <a href="/pricing">Pricing</a>
-            <a href="/faq">FAQ</a>
             <a href="/privacy">Privacy</a>
           </div>
           <a href="https://app.echo4ever.com" class="btn btn--primary btn--nav">Login to Your Echo4Ever Portal</a>
@@ -75,7 +74,6 @@ const { title, description = 'Echo4Ever - Your private digital memory vault. Pre
             <h4>Product</h4>
             <a href="/features">Features</a>
             <a href="/pricing">Pricing</a>
-            <a href="/faq">FAQ</a>
             <a href="/privacy">Privacy</a>
           </div>
           <div>
@@ -488,9 +486,15 @@ const { title, description = 'Echo4Ever - Your private digital memory vault. Pre
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
             <span>Ask Echo4Ever</span>
           </div>
-          <button id="e4e-chat-close" aria-label="Close chat">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-          </button>
+          <div class="e4e-chat-header-actions">
+            <button id="e4e-chat-expand" aria-label="Expand chat" title="Expand">
+              <svg id="e4e-expand-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
+              <svg id="e4e-collapse-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><polyline points="4 14 10 14 10 20"/><polyline points="20 10 14 10 14 4"/><line x1="14" y1="10" x2="21" y2="3"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
+            </button>
+            <button id="e4e-chat-close" aria-label="Close chat">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+          </div>
         </div>
         <div id="e4e-chat-messages">
           <div class="e4e-msg e4e-msg-bot">Hi! I'm the Echo4Ever assistant. Ask me anything about our features, pricing, or privacy.</div>
@@ -504,7 +508,7 @@ const { title, description = 'Echo4Ever - Your private digital memory vault. Pre
       </div>
     </div>
 
-    <style>
+    <style is:global>
       #e4e-chat {
         position: fixed;
         bottom: 24px;
@@ -545,6 +549,23 @@ const { title, description = 'Echo4Ever - Your private digital memory vault. Pre
         flex-direction: column;
         overflow: hidden;
         border: 1px solid var(--color-border, #e0e0e0);
+        transition: all 0.3s ease;
+      }
+
+      #e4e-chat-panel.e4e-expanded {
+        position: fixed;
+        bottom: 24px;
+        right: 24px;
+        width: calc(100vw - 48px);
+        max-width: 700px;
+        max-height: calc(100vh - 48px);
+        border-radius: 16px;
+        z-index: 10000;
+      }
+
+      #e4e-chat-panel.e4e-expanded #e4e-chat-messages {
+        max-height: none;
+        min-height: 400px;
       }
 
       .e4e-chat-header {
@@ -564,6 +585,13 @@ const { title, description = 'Echo4Ever - Your private digital memory vault. Pre
         font-size: 15px;
       }
 
+      .e4e-chat-header-actions {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+      }
+
+      #e4e-chat-expand,
       #e4e-chat-close {
         background: none;
         border: none;
@@ -572,10 +600,13 @@ const { title, description = 'Echo4Ever - Your private digital memory vault. Pre
         padding: 4px;
         display: flex;
         align-items: center;
+        justify-content: center;
+        border-radius: 6px;
         opacity: 0.8;
         transition: opacity 0.2s;
       }
 
+      #e4e-chat-expand:hover,
       #e4e-chat-close:hover {
         opacity: 1;
       }
@@ -589,6 +620,7 @@ const { title, description = 'Echo4Ever - Your private digital memory vault. Pre
         gap: 12px;
         min-height: 200px;
         max-height: 360px;
+        background: #f5f0e3;
       }
 
       .e4e-msg {
@@ -601,17 +633,73 @@ const { title, description = 'Echo4Ever - Your private digital memory vault. Pre
       }
 
       .e4e-msg-bot {
-        background: var(--color-bg, #f5f5f5);
-        color: var(--color-text, #333);
+        background: #ffffff;
+        color: #2c2c2c;
         align-self: flex-start;
         border-bottom-left-radius: 4px;
+        border: 1px solid #d4cdb8;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+      }
+
+      .e4e-msg-bot p {
+        margin: 0 0 8px 0;
+      }
+
+      .e4e-msg-bot p:last-child {
+        margin-bottom: 0;
+      }
+
+      .e4e-msg-bot ul {
+        margin: 6px 0;
+        padding-left: 18px;
+      }
+
+      .e4e-msg-bot li {
+        margin-bottom: 4px;
+      }
+
+      .e4e-msg-bot strong {
+        font-weight: 600;
+      }
+
+      .e4e-pricing-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 8px 0;
+        font-size: 13px;
+      }
+
+      .e4e-pricing-table th {
+        background: var(--color-accent, #2ab5b2);
+        color: #fff;
+        padding: 8px 10px;
+        text-align: left;
+        font-weight: 600;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.3px;
+      }
+
+      .e4e-pricing-table td {
+        padding: 7px 10px;
+        border-bottom: 1px solid var(--color-border, #e0e0e0);
+      }
+
+      .e4e-pricing-table tr:last-child td {
+        border-bottom: none;
+      }
+
+      .e4e-pricing-table tr:nth-child(even) {
+        background: rgba(0,0,0,0.03);
       }
 
       .e4e-msg-user {
-        background: var(--color-accent, #2ab5b2);
+        background: #1a3a3a;
         color: #fff;
         align-self: flex-end;
         border-bottom-right-radius: 4px;
+        font-weight: 500;
+        box-shadow: 0 1px 4px rgba(0,0,0,0.2);
       }
 
       .e4e-msg-typing {
@@ -711,21 +799,113 @@ const { title, description = 'Echo4Ever - Your private digital memory vault. Pre
       if (chatClose) {
         chatClose.addEventListener('click', () => {
           chatPanel.style.display = 'none';
+          chatPanel.classList.remove('e4e-expanded');
           chatBubble.style.display = 'flex';
+          document.getElementById('e4e-expand-icon').style.display = '';
+          document.getElementById('e4e-collapse-icon').style.display = 'none';
         });
+      }
+
+      const chatExpand = document.getElementById('e4e-chat-expand');
+      if (chatExpand) {
+        chatExpand.addEventListener('click', () => {
+          const expanded = chatPanel.classList.toggle('e4e-expanded');
+          document.getElementById('e4e-expand-icon').style.display = expanded ? 'none' : '';
+          document.getElementById('e4e-collapse-icon').style.display = expanded ? '' : 'none';
+          chatExpand.setAttribute('title', expanded ? 'Collapse' : 'Expand');
+          chatExpand.setAttribute('aria-label', expanded ? 'Collapse chat' : 'Expand chat');
+          chatMessages.scrollTop = chatMessages.scrollHeight;
+        });
+      }
+
+      function e4eFormatBot(text) {
+        // Sanitise HTML entities first
+        const esc = text.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+
+        // Handle markdown tables: detect lines with | separators
+        const lines = esc.split('\n');
+        let result = [];
+        let inTable = false;
+        let tableRows = [];
+
+        for (let i = 0; i < lines.length; i++) {
+          const line = lines[i].trim();
+          if (line.startsWith('|') && line.endsWith('|') && line.includes('|')) {
+            // Skip separator rows like |---|---|---|
+            if (/^[\|\s\-:]+$/.test(line)) continue;
+            const cells = line.split('|').filter((c, idx, arr) => idx > 0 && idx < arr.length - 1).map(c => c.trim());
+            if (!inTable) { inTable = true; tableRows = []; }
+            tableRows.push(cells);
+          } else {
+            if (inTable) {
+              result.push(buildTable(tableRows));
+              inTable = false;
+              tableRows = [];
+            }
+            result.push(line);
+          }
+        }
+        if (inTable) result.push(buildTable(tableRows));
+
+        function buildTable(rows) {
+          if (rows.length === 0) return '';
+          let html = '<table class="e4e-pricing-table">';
+          // First row as header
+          html += '<thead><tr>' + rows[0].map(c => '<th>' + c.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>') + '</th>').join('') + '</tr></thead>';
+          html += '<tbody>';
+          for (let r = 1; r < rows.length; r++) {
+            html += '<tr>' + rows[r].map(c => '<td>' + c.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>') + '</td>').join('') + '</tr>';
+          }
+          html += '</tbody></table>';
+          return html;
+        }
+
+        return result.join('\n')
+          // Bold: **text**
+          .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+          // Bullet lines: - item or * item
+          .replace(/^[\-\*]\s+(.+)$/gm, '<li>$1</li>')
+          // Wrap consecutive <li> in <ul>
+          .replace(/((?:<li>.*<\/li>\s*)+)/g, '<ul>$1</ul>')
+          // Numbered lists: 1. item
+          .replace(/^\d+\.\s+(.+)$/gm, '<li>$1</li>')
+          .replace(/((?:<li>.*<\/li>\s*)+)/g, function(m) {
+            return m.includes('<ul>') ? m : '<ul>' + m + '</ul>';
+          })
+          // Paragraphs: double newlines
+          .replace(/\n{2,}/g, '</p><p>')
+          // Single newlines to <br>
+          .replace(/\n/g, '<br>')
+          // Wrap in paragraph
+          .replace(/^(.+)$/, '<p>$1</p>')
+          // Clean empty paragraphs
+          .replace(/<p><\/p>/g, '');
       }
 
       function e4eAddMsg(text, role) {
         const div = document.createElement('div');
         div.className = 'e4e-msg ' + (role === 'user' ? 'e4e-msg-user' : 'e4e-msg-bot');
-        div.textContent = text;
+        if (role === 'user') {
+          div.textContent = text;
+        } else {
+          div.innerHTML = e4eFormatBot(text);
+        }
         chatMessages.appendChild(div);
         chatMessages.scrollTop = chatMessages.scrollHeight;
         return div;
       }
 
+      let e4eMsgCount = 0;
+      const E4E_CLIENT_LIMIT = 50;
+
       async function e4eSend(userText) {
         if (chatStreaming) return;
+
+        e4eMsgCount++;
+        if (e4eMsgCount > E4E_CLIENT_LIMIT) {
+          e4eAddMsg("You've reached the chat limit for this session. Please email us at contact@echo4ever.com for further help!", 'bot');
+          return;
+        }
 
         e4eAddMsg(userText, 'user');
         chatHistory.push({ role: 'user', content: userText });

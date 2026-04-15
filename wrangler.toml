@@ -1,0 +1,10 @@
+name = "echo4ever-website"
+pages_build_output_dir = "dist"
+compatibility_date = "2024-09-23"
+
+[ai]
+binding = "AI"
+
+[[kv_namespaces]]
+binding = "CHAT_RATE_LIMIT"
+id = "80e321725a944e5f83a16f79addbe812"
