@@ -1,3 +1,9 @@
+export async function onRequestGet() {
+  return new Response(JSON.stringify({ status: 'ok' }), {
+    headers: { 'content-type': 'application/json' },
+  });
+}
+
 export async function onRequestPost(context) {
   const { request, env } = context;
 
@@ -9,7 +15,7 @@ export async function onRequestPost(context) {
   // Validate AI binding exists
   if (!env.AI) {
     return new Response(
-      JSON.stringify({ reply: 'Our chat assistant is being set up. Please email us at contact@echo4ever.com for help.' }),
+      JSON.stringify({ reply: 'Our chat assistant is being set up. Please email us at contact@echo4ever.com for help.', debug: 'no-ai-binding' }),
       { status: 200, headers }
     );
   }
@@ -48,9 +54,14 @@ export async function onRequestPost(context) {
 
   try {
     // Fetch the knowledge base from static assets
-    const kbUrl = new URL('/Chatbot_Knowledge_Base.md', request.url);
-    const kbResponse = await env.ASSETS.fetch(kbUrl);
-    const kb = await kbResponse.text();
+    let kb = '';
+    try {
+      const kbUrl = new URL('/Chatbot_Knowledge_Base.md', request.url);
+      const kbResponse = await env.ASSETS.fetch(kbUrl);
+      kb = await kbResponse.text();
+    } catch {
+      kb = 'Echo4Ever is a private digital memory vault. Support email: contact@echo4ever.com';
+    }
 
     const systemPrompt = `You are the Echo4Ever customer support assistant. You help visitors learn about Echo4Ever — a private digital memory vault platform.
 
@@ -84,7 +95,7 @@ ${kb}`;
     );
   } catch (error) {
     return new Response(
-      JSON.stringify({ reply: 'I\'m having a little trouble right now. Please try again or email us at contact@echo4ever.com for help.' }),
+      JSON.stringify({ reply: 'I\'m having a little trouble right now. Please try again or email us at contact@echo4ever.com for help.', debug: String(error) }),
       { status: 200, headers }
     );
   }

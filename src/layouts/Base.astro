@@ -750,12 +750,20 @@ const { title, description = 'Echo4Ever - Your private digital memory vault. Pre
 
           typing.remove();
 
-          const data = await res.json();
-          const botText = data.reply || "I'm sorry, I couldn't generate a response. Please try again or email us at contact@echo4ever.com.";
+          const text = await res.text();
+          let data;
+          try {
+            data = JSON.parse(text);
+          } catch {
+            data = { reply: 'Something went wrong. Please email us at contact@echo4ever.com.' };
+            console.error('Chat response not JSON:', text.slice(0, 200));
+          }
 
+          const botText = data.reply || "I'm sorry, I couldn't generate a response. Please try again or email us at contact@echo4ever.com.";
           e4eAddMsg(botText, 'bot');
           chatHistory.push({ role: 'assistant', content: botText });
-        } catch {
+        } catch (err) {
+          console.error('Chat fetch error:', err);
           typing.remove();
           e4eAddMsg("I'm having trouble connecting right now. Please try again or email us at contact@echo4ever.com.", 'bot');
         }
