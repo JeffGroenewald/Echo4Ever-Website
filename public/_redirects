@@ -1,0 +1,6 @@
+# Redirect www to non-www
+https://www.echo4ever.com/* https://echo4ever.com/:splat 301
+
+# Redirect old FAQ page to home
+/faq /  301
+/faq/ / 301

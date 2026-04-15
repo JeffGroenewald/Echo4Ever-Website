@@ -2,7 +2,36 @@
 import Base from '../layouts/Base.astro';
 ---
 
-<Base title="Echo4Ever - Your Private Digital Memory Vault">
+<Base title="Echo4Ever - Your Private Digital Memory Vault" description="Preserve photos, videos, documents and life stories in a private digital vault. Control who sees your memories and when. Plans from $16.99/mo.">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Echo4Ever",
+    "url": "https://echo4ever.com",
+    "description": "Private digital memory vault. Preserve photos, videos, documents and life stories for the people who matter most.",
+    "applicationCategory": "LifestyleApplication",
+    "operatingSystem": "Web",
+    "offers": {
+      "@type": "AggregateOffer",
+      "lowPrice": "16.99",
+      "highPrice": "35.99",
+      "priceCurrency": "USD",
+      "offerCount": "3"
+    },
+    "provider": {
+      "@type": "Organization",
+      "name": "Echo4Ever",
+      "url": "https://echo4ever.com",
+      "logo": "https://echo4ever.com/images/logo.png",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "contact@echo4ever.com",
+        "contactType": "customer support"
+      }
+    }
+  })} />
 
   <!-- Hero -->
   <section class="hero">
