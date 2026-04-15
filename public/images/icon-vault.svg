@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <radialGradient id="bg6" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#e8e4d8"/>
+      <stop offset="100%" stop-color="#d8d4c8"/>
+    </radialGradient>
+    <radialGradient id="vault" cx="40%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#f5f2ec"/>
+      <stop offset="100%" stop-color="#d5d0c5"/>
+    </radialGradient>
+    <radialGradient id="dial" cx="45%" cy="35%" r="60%">
+      <stop offset="0%" stop-color="#e0ddd5"/>
+      <stop offset="100%" stop-color="#a8a59c"/>
+    </radialGradient>
+    <filter id="shadow6" x="-20%" y="-10%" width="140%" height="140%">
+      <feDropShadow dx="4" dy="8" stdDeviation="12" flood-color="#a0a090" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+  <rect width="400" height="400" fill="url(#bg6)"/>
+  <g filter="url(#shadow6)">
+    <!-- Vault body -->
+    <rect x="110" y="115" width="180" height="190" rx="14" fill="url(#vault)"/>
+    <!-- Vault door frame -->
+    <rect x="125" y="130" width="150" height="160" rx="8" fill="none" stroke="url(#dial)" stroke-width="4"/>
+    <!-- Dial outer ring -->
+    <circle cx="200" cy="210" r="42" fill="none" stroke="url(#dial)" stroke-width="6"/>
+    <!-- Dial inner -->
+    <circle cx="200" cy="210" r="28" fill="url(#dial)"/>
+    <!-- Dial center -->
+    <circle cx="200" cy="210" r="10" fill="#ccc8bc"/>
+    <!-- Dial notches -->
+    <rect x="198" y="170" width="4" height="14" rx="2" fill="#ccc8bc"/>
+    <rect x="198" y="236" width="4" height="14" rx="2" fill="#ccc8bc"/>
+    <rect x="160" y="208" width="14" height="4" rx="2" fill="#ccc8bc"/>
+    <rect x="226" y="208" width="14" height="4" rx="2" fill="#ccc8bc"/>
+    <!-- Handle -->
+    <rect x="260" y="195" width="22" height="30" rx="5" fill="url(#dial)"/>
+    <!-- Highlight -->
+    <circle cx="190" cy="200" r="6" fill="#eae8e0" opacity="0.5"/>
+    <!-- Hinges -->
+    <rect x="110" y="150" width="10" height="20" rx="3" fill="url(#dial)"/>
+    <rect x="110" y="260" width="10" height="20" rx="3" fill="url(#dial)"/>
+  </g>
+</svg>
