@@ -1,11 +1,16 @@
 export async function onRequestPost(context) {
   const { request, env } = context;
 
+  const headers = {
+    'content-type': 'application/json',
+    'access-control-allow-origin': '*',
+  };
+
   // Validate AI binding exists
   if (!env.AI) {
     return new Response(
-      JSON.stringify({ error: 'AI service not configured.' }),
-      { status: 503, headers: { 'content-type': 'application/json' } }
+      JSON.stringify({ reply: 'Our chat assistant is being set up. Please email us at contact@echo4ever.com for help.' }),
+      { status: 200, headers }
     );
   }
 
@@ -14,8 +19,8 @@ export async function onRequestPost(context) {
     body = await request.json();
   } catch {
     return new Response(
-      JSON.stringify({ error: 'Invalid JSON.' }),
-      { status: 400, headers: { 'content-type': 'application/json' } }
+      JSON.stringify({ reply: 'Sorry, something went wrong. Please try again.' }),
+      { status: 200, headers }
     );
   }
 
@@ -23,8 +28,8 @@ export async function onRequestPost(context) {
 
   if (!messages || !Array.isArray(messages) || messages.length === 0) {
     return new Response(
-      JSON.stringify({ error: 'Messages array is required.' }),
-      { status: 400, headers: { 'content-type': 'application/json' } }
+      JSON.stringify({ reply: 'Please type a question and I\'ll do my best to help!' }),
+      { status: 200, headers }
     );
   }
 
@@ -32,12 +37,12 @@ export async function onRequestPost(context) {
   const sanitised = messages
     .filter(m => m && (m.role === 'user' || m.role === 'assistant') && typeof m.content === 'string')
     .map(m => ({ role: m.role, content: m.content.slice(0, 1000) }))
-    .slice(-10);
+    .slice(-6);
 
   if (sanitised.length === 0) {
     return new Response(
-      JSON.stringify({ error: 'No valid messages provided.' }),
-      { status: 400, headers: { 'content-type': 'application/json' } }
+      JSON.stringify({ reply: 'Please type a question and I\'ll do my best to help!' }),
+      { status: 200, headers }
     );
   }
 
@@ -71,19 +76,16 @@ ${kb}`;
 
     const response = await env.AI.run('@cf/meta/llama-3.1-8b-instruct', {
       messages: aiMessages,
-      stream: true,
     });
 
-    return new Response(response, {
-      headers: {
-        'content-type': 'text/event-stream',
-        'cache-control': 'no-cache',
-      },
-    });
+    return new Response(
+      JSON.stringify({ reply: response.response || "That's a great question! I don't have that specific information, but our team would love to help. Please email us at contact@echo4ever.com and we'll get back to you." }),
+      { status: 200, headers }
+    );
   } catch (error) {
     return new Response(
-      JSON.stringify({ error: 'Something went wrong. Please try again or email contact@echo4ever.com.' }),
-      { status: 500, headers: { 'content-type': 'application/json' } }
+      JSON.stringify({ reply: 'I\'m having a little trouble right now. Please try again or email us at contact@echo4ever.com for help.' }),
+      { status: 200, headers }
     );
   }
 }
