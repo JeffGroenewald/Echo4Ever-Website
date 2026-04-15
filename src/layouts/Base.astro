@@ -179,8 +179,8 @@ const canonicalURL = new URL(Astro.url.pathname, 'https://echo4ever.com');
         position: sticky;
         top: 0;
         z-index: 100;
-        background: var(--color-bg);
-        border-bottom: 1px solid var(--color-border);
+        background: var(--color-accent);
+        border-bottom: none;
       }
 
       .site-header__inner {
@@ -224,14 +224,14 @@ const canonicalURL = new URL(Astro.url.pathname, 'https://echo4ever.com');
         font-family: var(--font-body);
         font-size: 32px;
         font-weight: 500;
-        color: var(--color-text-secondary);
+        color: var(--color-accent-text);
         text-decoration: none;
-        transition: color 0.2s;
+        transition: opacity 0.2s;
       }
 
       .site-nav a:hover {
-        color: var(--color-accent);
-        opacity: 1;
+        color: var(--color-accent-text);
+        opacity: 0.8;
       }
 
       .btn--nav {
@@ -409,8 +409,8 @@ const canonicalURL = new URL(Astro.url.pathname, 'https://echo4ever.com');
 
       /* ─── Footer ─── */
       .site-footer {
-        background: var(--color-surface);
-        border-top: 1px solid var(--color-border);
+        background: var(--color-accent);
+        border-top: none;
         padding: 80px 0 32px;
         margin-top: 0;
       }
@@ -435,7 +435,7 @@ const canonicalURL = new URL(Astro.url.pathname, 'https://echo4ever.com');
 
       .site-footer__tagline {
         font-size: clamp(18px, 2vw, 24px);
-        color: var(--color-text-secondary);
+        color: var(--color-accent-text);
         line-height: 1.7;
         margin-bottom: 0;
         font-weight: 700;
@@ -457,7 +457,7 @@ const canonicalURL = new URL(Astro.url.pathname, 'https://echo4ever.com');
         font-family: var(--font-body);
         font-size: var(--font-size-caption);
         font-weight: 600;
-        color: var(--color-text-primary);
+        color: var(--color-accent-text);
         margin-bottom: 12px;
         text-transform: uppercase;
         letter-spacing: 0.05em;
@@ -466,13 +466,14 @@ const canonicalURL = new URL(Astro.url.pathname, 'https://echo4ever.com');
       .site-footer__links a {
         display: block;
         font-size: var(--font-size-caption);
-        color: var(--color-text-secondary);
+        color: var(--color-accent-text);
+        opacity: 0.85;
         padding: 4px 0;
         text-decoration: none;
       }
 
       .site-footer__links a:hover {
-        color: var(--color-accent);
+        opacity: 1;
       }
 
       .site-footer__social {
@@ -483,6 +484,7 @@ const canonicalURL = new URL(Astro.url.pathname, 'https://echo4ever.com');
       }
 
       .site-footer__social a {
+        color: var(--color-accent-text) !important;
         text-decoration: none;
         transition: opacity 0.2s;
       }
@@ -492,11 +494,12 @@ const canonicalURL = new URL(Astro.url.pathname, 'https://echo4ever.com');
       }
 
       .site-footer__bottom {
-        border-top: 1px solid var(--color-border);
+        border-top: 1px solid rgba(255,255,255,0.2);
         padding-top: 24px;
         font-size: 13px;
         width: 100%;
         text-align: center;
+        color: var(--color-accent-text);
       }
     </style>
 
