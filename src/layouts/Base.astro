@@ -476,5 +476,336 @@ const { title, description = 'Echo4Ever - Your private digital memory vault. Pre
         text-align: center;
       }
     </style>
+
+    <!-- Chat Widget -->
+    <div id="e4e-chat">
+      <button id="e4e-chat-bubble" aria-label="Open chat assistant" title="Ask Echo4Ever">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      </button>
+      <div id="e4e-chat-panel" style="display:none;">
+        <div class="e4e-chat-header">
+          <div class="e4e-chat-header-info">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            <span>Ask Echo4Ever</span>
+          </div>
+          <button id="e4e-chat-close" aria-label="Close chat">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
+        </div>
+        <div id="e4e-chat-messages">
+          <div class="e4e-msg e4e-msg-bot">Hi! I'm the Echo4Ever assistant. Ask me anything about our features, pricing, or privacy.</div>
+        </div>
+        <form id="e4e-chat-form">
+          <input type="text" id="e4e-chat-input" placeholder="Type your question..." autocomplete="off" maxlength="500" />
+          <button type="submit" id="e4e-chat-send" aria-label="Send">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <style>
+      #e4e-chat {
+        position: fixed;
+        bottom: 24px;
+        right: 24px;
+        z-index: 9999;
+        font-family: inherit;
+      }
+
+      #e4e-chat-bubble {
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        background: var(--color-accent, #2ab5b2);
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+        transition: transform 0.2s, box-shadow 0.2s;
+      }
+
+      #e4e-chat-bubble:hover {
+        transform: scale(1.08);
+        box-shadow: 0 6px 24px rgba(0,0,0,0.22);
+      }
+
+      #e4e-chat-panel {
+        position: absolute;
+        bottom: 72px;
+        right: 0;
+        width: 380px;
+        max-height: 520px;
+        background: var(--color-surface, #fff);
+        border-radius: 16px;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+        flex-direction: column;
+        overflow: hidden;
+        border: 1px solid var(--color-border, #e0e0e0);
+      }
+
+      .e4e-chat-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 14px 16px;
+        background: var(--color-accent, #2ab5b2);
+        color: #fff;
+      }
+
+      .e4e-chat-header-info {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-weight: 600;
+        font-size: 15px;
+      }
+
+      #e4e-chat-close {
+        background: none;
+        border: none;
+        color: #fff;
+        cursor: pointer;
+        padding: 4px;
+        display: flex;
+        align-items: center;
+        opacity: 0.8;
+        transition: opacity 0.2s;
+      }
+
+      #e4e-chat-close:hover {
+        opacity: 1;
+      }
+
+      #e4e-chat-messages {
+        flex: 1;
+        overflow-y: auto;
+        padding: 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        min-height: 200px;
+        max-height: 360px;
+      }
+
+      .e4e-msg {
+        max-width: 85%;
+        padding: 10px 14px;
+        border-radius: 12px;
+        font-size: 14px;
+        line-height: 1.5;
+        word-wrap: break-word;
+      }
+
+      .e4e-msg-bot {
+        background: var(--color-bg, #f5f5f5);
+        color: var(--color-text, #333);
+        align-self: flex-start;
+        border-bottom-left-radius: 4px;
+      }
+
+      .e4e-msg-user {
+        background: var(--color-accent, #2ab5b2);
+        color: #fff;
+        align-self: flex-end;
+        border-bottom-right-radius: 4px;
+      }
+
+      .e4e-msg-typing {
+        align-self: flex-start;
+        background: var(--color-bg, #f5f5f5);
+        color: var(--color-text-secondary, #888);
+        font-style: italic;
+        padding: 10px 14px;
+        border-radius: 12px;
+        border-bottom-left-radius: 4px;
+        font-size: 14px;
+      }
+
+      #e4e-chat-form {
+        display: flex;
+        padding: 12px;
+        gap: 8px;
+        border-top: 1px solid var(--color-border, #e0e0e0);
+        background: var(--color-surface, #fff);
+      }
+
+      #e4e-chat-input {
+        flex: 1;
+        padding: 10px 14px;
+        border: 1px solid var(--color-border, #e0e0e0);
+        border-radius: 8px;
+        font-size: 14px;
+        outline: none;
+        background: var(--color-bg, #fff);
+        color: var(--color-text, #333);
+        transition: border-color 0.2s;
+      }
+
+      #e4e-chat-input:focus {
+        border-color: var(--color-accent, #2ab5b2);
+      }
+
+      #e4e-chat-send {
+        width: 40px;
+        height: 40px;
+        border-radius: 8px;
+        background: var(--color-accent, #2ab5b2);
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: opacity 0.2s;
+        flex-shrink: 0;
+      }
+
+      #e4e-chat-send:hover {
+        opacity: 0.9;
+      }
+
+      #e4e-chat-send:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+
+      @media (max-width: 480px) {
+        #e4e-chat {
+          bottom: 16px;
+          right: 16px;
+        }
+
+        #e4e-chat-panel {
+          width: calc(100vw - 32px);
+          right: -8px;
+          bottom: 68px;
+          max-height: 70vh;
+        }
+      }
+    </style>
+
+    <script>
+      const chatBubble = document.getElementById('e4e-chat-bubble');
+      const chatPanel = document.getElementById('e4e-chat-panel');
+      const chatClose = document.getElementById('e4e-chat-close');
+      const chatForm = document.getElementById('e4e-chat-form');
+      const chatInput = document.getElementById('e4e-chat-input');
+      const chatMessages = document.getElementById('e4e-chat-messages');
+      const chatSend = document.getElementById('e4e-chat-send');
+
+      let chatHistory = [];
+      let chatStreaming = false;
+
+      if (chatBubble && chatPanel) {
+        chatBubble.addEventListener('click', () => {
+          chatPanel.style.display = 'flex';
+          chatBubble.style.display = 'none';
+          if (chatInput) chatInput.focus();
+        });
+      }
+
+      if (chatClose) {
+        chatClose.addEventListener('click', () => {
+          chatPanel.style.display = 'none';
+          chatBubble.style.display = 'flex';
+        });
+      }
+
+      function e4eAddMsg(text, role) {
+        const div = document.createElement('div');
+        div.className = 'e4e-msg ' + (role === 'user' ? 'e4e-msg-user' : 'e4e-msg-bot');
+        div.textContent = text;
+        chatMessages.appendChild(div);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+        return div;
+      }
+
+      async function e4eSend(userText) {
+        if (chatStreaming) return;
+
+        e4eAddMsg(userText, 'user');
+        chatHistory.push({ role: 'user', content: userText });
+
+        chatInput.value = '';
+        chatSend.disabled = true;
+        chatStreaming = true;
+
+        // Typing indicator
+        const typing = document.createElement('div');
+        typing.className = 'e4e-msg-typing';
+        typing.textContent = 'Thinking\u2026';
+        chatMessages.appendChild(typing);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+
+        try {
+          const res = await fetch('/api/chat', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ messages: chatHistory }),
+          });
+
+          typing.remove();
+
+          if (!res.ok) {
+            throw new Error('Request failed');
+          }
+
+          const reader = res.body.getReader();
+          const decoder = new TextDecoder();
+          let botText = '';
+          const botDiv = e4eAddMsg('', 'bot');
+
+          while (true) {
+            const { done, value } = await reader.read();
+            if (done) break;
+
+            const chunk = decoder.decode(value, { stream: true });
+            const lines = chunk.split('\n');
+
+            for (const line of lines) {
+              if (line.startsWith('data: ')) {
+                const data = line.slice(6);
+                if (data === '[DONE]') continue;
+                try {
+                  const parsed = JSON.parse(data);
+                  if (parsed.response) {
+                    botText += parsed.response;
+                    botDiv.textContent = botText;
+                    chatMessages.scrollTop = chatMessages.scrollHeight;
+                  }
+                } catch {}
+              }
+            }
+          }
+
+          if (!botText) {
+            botDiv.textContent = "I'm sorry, I couldn't generate a response. Please try again or email us at contact@echo4ever.com.";
+          }
+
+          chatHistory.push({ role: 'assistant', content: botText || '' });
+        } catch {
+          typing.remove();
+          e4eAddMsg("I'm having trouble connecting right now. Please try again or email us at contact@echo4ever.com.", 'bot');
+        }
+
+        chatStreaming = false;
+        chatSend.disabled = false;
+        chatInput.focus();
+      }
+
+      if (chatForm) {
+        chatForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const text = chatInput.value.trim();
+          if (text && !chatStreaming) {
+            e4eSend(text);
+          }
+        });
+      }
+    </script>
   </body>
 </html>
