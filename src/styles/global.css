@@ -218,6 +218,11 @@ p:last-child {
   font-size: var(--font-size-subheading);
 }
 
+.btn--nav {
+  padding: 28px 72px;
+  font-size: 32px;
+}
+
 /* ─── Cards ─── */
 
 .card {
