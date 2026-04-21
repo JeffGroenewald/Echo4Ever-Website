@@ -1,0 +1,179 @@
+---
+import type { Translations } from '../i18n/translations/en';
+
+interface Props {
+  t: Translations;
+  lang: string;
+}
+
+const { t, lang } = Astro.props;
+---
+
+<section class="page-header">
+  <div class="container">
+    <h1 style="font-weight: 700;">{t.features.header.title}</h1>
+    <p>{t.features.header.subtitle}</p>
+  </div>
+</section>
+
+<!-- Life Story -->
+<section class="section">
+  <div class="container">
+    <div class="feature-detail feature-detail--with-image">
+      <div class="feature-detail__image">
+        <img src="/images/Life%20story.png" alt={t.features.lifeStory.title} loading="lazy" />
+      </div>
+      <div class="feature-detail__content">
+        <h2>{t.features.lifeStory.title}</h2>
+        <p>{t.features.lifeStory.p1}</p>
+        <p>{t.features.lifeStory.p2}</p>
+        <blockquote class="prompt-quotes">
+          <p><em>"{t.features.lifeStory.prompt1}"</em></p>
+          <p><em>"{t.features.lifeStory.prompt2}"</em></p>
+          <p><em>"{t.features.lifeStory.prompt3}"</em></p>
+        </blockquote>
+        <p>{t.features.lifeStory.p3}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Family Tree -->
+<section class="section section--alt">
+  <div class="container">
+    <div class="feature-detail feature-detail--with-image feature-detail--reverse">
+      <div class="feature-detail__image">
+        <img src="/images/Family%20tree.png" alt={t.features.familyTree.title} loading="lazy" />
+      </div>
+      <div class="feature-detail__content">
+        <h2>{t.features.familyTree.title}</h2>
+        <p>{t.features.familyTree.p1}</p>
+        <p>{t.features.familyTree.p2}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Photographs -->
+<section class="section">
+  <div class="container">
+    <div class="feature-detail feature-detail--with-image">
+      <div class="feature-detail__image">
+        <img src="/images/Photogrpahs.png" alt={t.features.photographs.title} loading="lazy" />
+      </div>
+      <div class="feature-detail__content">
+        <h2>{t.features.photographs.title}</h2>
+        <p>{t.features.photographs.p1}</p>
+        <p>{t.features.photographs.p2}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Videos & Audio -->
+<section class="section section--alt">
+  <div class="container">
+    <div class="feature-detail feature-detail--with-image feature-detail--reverse">
+      <div class="feature-detail__image">
+        <img src="/images/Video.png" alt={t.features.videosAudio.title} loading="lazy" />
+      </div>
+      <div class="feature-detail__content">
+        <h2>{t.features.videosAudio.title}</h2>
+        <p>{t.features.videosAudio.p1}</p>
+        <p>{t.features.videosAudio.p2}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Documents -->
+<section class="section">
+  <div class="container">
+    <div class="feature-detail feature-detail--with-image">
+      <div class="feature-detail__image">
+        <img src="/images/Documents.jpg" alt={t.features.documents.title} loading="lazy" />
+      </div>
+      <div class="feature-detail__content">
+        <h2>{t.features.documents.title}</h2>
+        <p>{t.features.documents.p1}</p>
+        <p>{t.features.documents.p2}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Time Capsules -->
+<section class="section section--alt">
+  <div class="container">
+    <div class="feature-detail feature-detail--with-image feature-detail--reverse">
+      <div class="feature-detail__image">
+        <img src="/images/Clocks.png" alt={t.features.timeCapsules.title} loading="lazy" />
+      </div>
+      <div class="feature-detail__content">
+        <h2>{t.features.timeCapsules.title}</h2>
+        <p>{t.features.timeCapsules.p1}</p>
+        <p>{t.features.timeCapsules.p2}</p>
+        <p>{t.features.timeCapsules.p3}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Sharing & Legacy -->
+<section class="section">
+  <div class="container text-center">
+    <h2 style="font-weight: 700;">{t.features.sharing.title}</h2>
+    <p class="text-secondary" style="margin: 0 auto 48px;">{t.features.sharing.subtitle}</p>
+    <div class="grid grid--3">
+      <div class="card text-center">
+        <h3 style="font-weight: 700;">{t.features.sharing.familySharingTitle}</h3>
+        <p class="text-secondary">{t.features.sharing.familySharingDesc}</p>
+      </div>
+      <div class="card text-center">
+        <h3 style="font-weight: 700;">{t.features.sharing.timeLockedTitle}</h3>
+        <p class="text-secondary">{t.features.sharing.timeLockedDesc}</p>
+      </div>
+      <div class="card text-center">
+        <h3 style="font-weight: 700;">{t.features.sharing.heritageCustodianTitle}</h3>
+        <p class="text-secondary">{t.features.sharing.heritageCustodianDesc}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-banner section--alt">
+  <div class="container">
+    <h2 style="font-weight: 700;">{t.features.cta.title}</h2>
+    <p>{t.features.cta.description}</p>
+    <a href="https://app.echo4ever.com/signup" class="btn btn--primary btn--large">{t.features.cta.button}</a>
+  </div>
+</section>
+
+<style>
+  .feature-detail {
+    max-width: 100%;
+    margin: 0;
+    text-align: center;
+  }
+  .feature-detail__content {
+    max-width: 100%;
+  }
+  .feature-detail__content p {
+    font-size: clamp(18px, 2vw, 24px);
+    line-height: 1.8;
+  }
+  .feature-detail h2 {
+    margin-bottom: 24px;
+    font-weight: 700;
+  }
+  .prompt-quotes {
+    border-left: 3px solid var(--color-accent);
+    padding-left: 20px;
+    margin: 16px 0;
+  }
+  .prompt-quotes p {
+    margin-bottom: 8px;
+    color: var(--color-text-secondary);
+  }
+</style>

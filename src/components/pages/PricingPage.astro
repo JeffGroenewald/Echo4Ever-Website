@@ -1,0 +1,299 @@
+---
+import type { Translations } from '../i18n/translations/en';
+
+interface Props {
+  t: Translations;
+  lang: string;
+}
+
+const { t, lang } = Astro.props;
+---
+
+<section class="page-header">
+  <div class="container">
+    <h1>{t.pricing.header.title}</h1>
+    <p>{t.pricing.header.subtitle}</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+
+    <!-- Country selector -->
+    <div class="currency-select text-center">
+      <label for="country" class="text-secondary">{t.pricing.countryLabel}</label>
+      <select id="country">
+        <option value="" selected disabled>{t.pricing.countryDefault}</option>
+        <option value="NZ">New Zealand</option>
+        <option value="AU">Australia</option>
+        <option value="US">United States</option>
+        <option value="GB">United Kingdom</option>
+        <option value="CA">Canada</option>
+        <option value="IE">Ireland</option>
+        <option value="ZA">South Africa</option>
+        <option value="DE">Germany</option>
+        <option value="FR">France</option>
+        <option value="IT">Italy</option>
+        <option value="ES">Spain</option>
+        <option value="NL">Netherlands</option>
+        <option value="BE">Belgium</option>
+        <option value="AT">Austria</option>
+        <option value="CH">Switzerland</option>
+        <option value="SE">Sweden</option>
+        <option value="NO">Norway</option>
+        <option value="DK">Denmark</option>
+        <option value="FI">Finland</option>
+        <option value="PT">Portugal</option>
+        <option value="JP">Japan</option>
+        <option value="SG">Singapore</option>
+        <option value="IN">India</option>
+        <option value="BR">Brazil</option>
+        <option value="MX">Mexico</option>
+        <option value="AR">Argentina</option>
+        <option value="CL">Chile</option>
+        <option value="CO">Colombia</option>
+        <option value="PH">Philippines</option>
+        <option value="MY">Malaysia</option>
+        <option value="TH">Thailand</option>
+        <option value="ID">Indonesia</option>
+        <option value="KR">South Korea</option>
+        <option value="AE">United Arab Emirates</option>
+        <option value="SA">Saudi Arabia</option>
+        <option value="EG">Egypt</option>
+        <option value="KE">Kenya</option>
+        <option value="NG">Nigeria</option>
+        <option value="GH">Ghana</option>
+        <option value="OTHER">Other</option>
+      </select>
+    </div>
+
+    <!-- Billing toggle (hidden until country selected) -->
+    <div class="billing-toggle text-center" id="billing-toggle" style="display: none;">
+      <button class="billing-btn active" data-interval="month">{t.pricing.monthly}</button>
+      <button class="billing-btn" data-interval="year">{t.pricing.yearly} <span class="billing-save">{t.pricing.save}</span></button>
+    </div>
+
+    <div class="grid grid--3 pricing-grid" id="pricing-grid" style="display: none;">
+
+      <!-- Foundation -->
+      <div class="pricing-card">
+        <h3>{t.pricing.foundation}</h3>
+        <p class="pricing-storage">{t.pricing.storage25}</p>
+        <div class="pricing-price" data-prices='{"NZD":{"month":"28.99","year":"347.66"},"USD":{"month":"16.99","year":"203.66"},"AUD":{"month":"23.99","year":"287.66"}}'>
+        </div>
+        <p class="pricing-interval">{t.pricing.perMonth}</p>
+        <ul class="pricing-features">
+          <li>{t.pricing.featurePhotos}</li>
+          <li>{t.pricing.featureDocuments}</li>
+          <li>{t.pricing.featureLifeStory}</li>
+          <li>{t.pricing.featureFamilyTree}</li>
+          <li>{t.pricing.featureSharing}</li>
+          <li>{t.pricing.featureTimeCapsules}</li>
+          <li>{t.pricing.featureLegacy}</li>
+        </ul>
+        <a href="https://app.echo4ever.com/signup" class="btn btn--outline">{t.pricing.getStarted}</a>
+      </div>
+
+      <!-- Legacy -->
+      <div class="pricing-card pricing-card--popular">
+        <span class="pricing-badge">{t.pricing.mostPopular}</span>
+        <h3>{t.pricing.legacy}</h3>
+        <p class="pricing-storage">{t.pricing.storage100}</p>
+        <div class="pricing-price" data-prices='{"NZD":{"month":"32.99","year":"395.66"},"USD":{"month":"17.99","year":"215.66"},"AUD":{"month":"26.99","year":"323.66"}}'>
+        </div>
+        <p class="pricing-interval">{t.pricing.perMonth}</p>
+        <ul class="pricing-features">
+          <li>{t.pricing.featurePhotos}</li>
+          <li>{t.pricing.featureDocuments}</li>
+          <li>{t.pricing.featureLifeStory}</li>
+          <li>{t.pricing.featureFamilyTree}</li>
+          <li>{t.pricing.featureSharing}</li>
+          <li>{t.pricing.featureTimeCapsules}</li>
+          <li>{t.pricing.featureLegacy}</li>
+        </ul>
+        <a href="https://app.echo4ever.com/signup" class="btn btn--primary">{t.pricing.getStarted}</a>
+      </div>
+
+      <!-- Generations -->
+      <div class="pricing-card">
+        <h3>{t.pricing.generations}</h3>
+        <p class="pricing-storage">{t.pricing.storage250}</p>
+        <div class="pricing-price" data-prices='{"NZD":{"month":"35.99","year":"431.66"},"USD":{"month":"23.99","year":"287.66"},"AUD":{"month":"31.99","year":"383.66"}}'>
+        </div>
+        <p class="pricing-interval">{t.pricing.perMonth}</p>
+        <ul class="pricing-features">
+          <li>{t.pricing.featurePhotos}</li>
+          <li>{t.pricing.featureDocuments}</li>
+          <li>{t.pricing.featureLifeStory}</li>
+          <li>{t.pricing.featureFamilyTree}</li>
+          <li>{t.pricing.featureSharing}</li>
+          <li>{t.pricing.featureTimeCapsules}</li>
+          <li>{t.pricing.featureLegacy}</li>
+        </ul>
+        <a href="https://app.echo4ever.com/signup" class="btn btn--outline">{t.pricing.getStarted}</a>
+      </div>
+
+    </div>
+
+    <p class="text-center text-secondary" id="pricing-note" style="margin-top: 40px; font-size: var(--font-size-caption); display: none;">
+      {t.pricing.note}
+    </p>
+
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-banner">
+  <div class="container">
+    <h2>{t.pricing.cta.title}</h2>
+    <p>{t.pricing.cta.description}</p>
+    <a href="https://app.echo4ever.com/signup" class="btn btn--primary btn--large">{t.pricing.cta.button}</a>
+  </div>
+</section>
+
+<style>
+  .billing-toggle {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    margin-bottom: 24px;
+  }
+  .billing-btn {
+    font-family: var(--font-body);
+    font-size: 24px;
+    font-weight: 600;
+    padding: 20px 48px;
+    border: 1px solid var(--color-border);
+    background: transparent;
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .billing-btn:first-child {
+    border-radius: 40px 0 0 40px;
+  }
+  .billing-btn:last-child {
+    border-radius: 0 40px 40px 0;
+    border-left: none;
+  }
+  .billing-btn.active {
+    background: var(--color-accent);
+    color: var(--color-accent-text);
+    border-color: var(--color-accent);
+  }
+  .billing-save {
+    font-size: 14px;
+    font-weight: 700;
+    background: #d4a04a;
+    color: #ffffff;
+    padding: 4px 12px;
+    border-radius: 12px;
+    margin-left: 8px;
+  }
+  .currency-select {
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    background: var(--color-accent);
+    border: 1px solid var(--color-accent);
+    border-radius: var(--radius-card);
+    padding: 40px;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    z-index: 1;
+  }
+  .currency-select label {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--color-accent-text);
+  }
+  .currency-select select {
+    font-family: var(--font-body);
+    font-size: 24px;
+    padding: 16px 24px;
+    border: 2px solid var(--color-accent);
+    border-radius: 8px;
+    background: #ffffff;
+    color: #1E2A2A;
+    cursor: pointer;
+    min-width: 360px;
+  }
+  .pricing-grid {
+    align-items: start;
+  }
+  @media (max-width: 768px) {
+    .billing-btn {
+      font-size: 18px;
+      padding: 14px 24px;
+    }
+    .billing-save {
+      font-size: 12px;
+    }
+    .currency-select select {
+      width: 100%;
+      min-width: unset;
+      font-size: 20px;
+      padding: 14px 16px;
+    }
+    .currency-select label {
+      font-size: 20px;
+    }
+  }
+</style>
+
+<script is:inline>
+  function getCurrency(countryCode) {
+    if (countryCode === 'NZ') return 'NZD';
+    if (countryCode === 'AU') return 'AUD';
+    return 'USD';
+  }
+
+  var symbols = { NZD: 'NZ$', USD: 'US$', AUD: 'AU$' };
+
+  function updatePrices() {
+    var countrySelect = document.getElementById('country');
+    var countryCode = countrySelect.value;
+    if (!countryCode) return;
+
+    var billingToggle = document.getElementById('billing-toggle');
+    var pricingGrid = document.getElementById('pricing-grid');
+    var pricingNote = document.getElementById('pricing-note');
+    if (billingToggle) billingToggle.style.display = 'flex';
+    if (pricingGrid) pricingGrid.style.display = '';
+    if (pricingNote) pricingNote.style.display = '';
+
+    var currency = getCurrency(countryCode);
+    var activeBtn = document.querySelector('.billing-btn.active');
+    var interval = activeBtn ? activeBtn.getAttribute('data-interval') : 'month';
+    var sym = symbols[currency] || '$';
+
+    document.querySelectorAll('.pricing-price').forEach(function(el) {
+      var prices = JSON.parse(el.getAttribute('data-prices') || '{}');
+      var price = prices[currency] && prices[currency][interval];
+      if (price) {
+        el.textContent = sym + price;
+      }
+    });
+
+    var perMonth = document.documentElement.getAttribute('data-per-month') || 'per month';
+    var perYear = document.documentElement.getAttribute('data-per-year') || 'per year';
+    document.querySelectorAll('.pricing-interval').forEach(function(el) {
+      el.textContent = interval === 'year' ? perYear : perMonth;
+    });
+  }
+
+  document.querySelectorAll('.billing-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.billing-btn').forEach(function(b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      updatePrices();
+    });
+  });
+
+  document.getElementById('country')?.addEventListener('change', updatePrices);
+</script>

@@ -1,0 +1,160 @@
+---
+import type { Translations } from '../i18n/translations/en';
+
+interface Props {
+  t: Translations;
+  lang: string;
+}
+
+const { t, lang } = Astro.props;
+---
+
+<section class="page-header">
+  <div class="container">
+    <h1 style="font-weight: 700;">{t.privacy.header.title}</h1>
+    <p>{t.privacy.header.subtitle}</p>
+  </div>
+</section>
+
+<!-- Private by Default -->
+<section class="section">
+  <div class="container">
+    <div class="feature-detail feature-detail--with-image">
+      <div class="feature-detail__image">
+        <img src="/images/icon-private.svg" alt={t.privacy.privateByDefault.title} loading="lazy" />
+      </div>
+      <div class="feature-detail__content">
+        <h2 style="font-weight: 700;">{t.privacy.privateByDefault.title}</h2>
+        <p>{t.privacy.privateByDefault.description}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- No Public Profiles -->
+<section class="section section--alt">
+  <div class="container">
+    <div class="feature-detail feature-detail--with-image feature-detail--reverse">
+      <div class="feature-detail__image">
+        <img src="/images/icon-family.svg" alt={t.privacy.noPublicProfiles.title} loading="lazy" />
+      </div>
+      <div class="feature-detail__content">
+        <h2 style="font-weight: 700;">{t.privacy.noPublicProfiles.title}</h2>
+        <p>{t.privacy.noPublicProfiles.description}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- You Control Access -->
+<section class="section">
+  <div class="container">
+    <div class="feature-detail feature-detail--with-image">
+      <div class="feature-detail__image">
+        <img src="/images/icon-access.svg" alt={t.privacy.youControlAccess.title} loading="lazy" />
+      </div>
+      <div class="feature-detail__content">
+        <h2 style="font-weight: 700;">{t.privacy.youControlAccess.title}</h2>
+        <p>{t.privacy.youControlAccess.description}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Time-Locked Content -->
+<section class="section section--alt">
+  <div class="container">
+    <div class="feature-detail feature-detail--with-image feature-detail--reverse">
+      <div class="feature-detail__image">
+        <img src="/images/icon-timelock.svg" alt={t.privacy.timeLockedContent.title} loading="lazy" />
+      </div>
+      <div class="feature-detail__content">
+        <h2 style="font-weight: 700;">{t.privacy.timeLockedContent.title}</h2>
+        <p>{t.privacy.timeLockedContent.description}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Your Legacy, Protected -->
+<section class="section">
+  <div class="container">
+    <div class="feature-detail feature-detail--with-image">
+      <div class="feature-detail__image">
+        <img src="/images/icon-legacy.svg" alt={t.privacy.yourLegacy.title} loading="lazy" />
+      </div>
+      <div class="feature-detail__content">
+        <h2 style="font-weight: 700;">{t.privacy.yourLegacy.title}</h2>
+        <p>{t.privacy.yourLegacy.description}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Trust, Simplified -->
+<section class="section section--alt">
+  <div class="container">
+    <div class="feature-detail feature-detail--with-image feature-detail--reverse">
+      <div class="feature-detail__image">
+        <img src="/images/icon-vault.svg" alt={t.privacy.trustSimplified.title} loading="lazy" />
+      </div>
+      <div class="feature-detail__content">
+        <h2 style="font-weight: 700;">{t.privacy.trustSimplified.title}</h2>
+        <p>{t.privacy.trustSimplified.description}</p>
+        <p><strong>{t.privacy.trustSimplified.promise}</strong></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Three visibility levels -->
+<section class="section">
+  <div class="container text-center">
+    <h2 style="font-weight: 700;">{t.privacy.visibilityLevels.title}</h2>
+    <p class="text-secondary" style="margin: 0 auto 40px;">{t.privacy.visibilityLevels.subtitle}</p>
+    <div class="grid grid--3">
+      <div class="card text-center">
+        <div class="feature-icon"><img src="/images/icon-private.svg" alt={t.privacy.visibilityLevels.privateTitle} class="feature-icon__img" /></div>
+        <h3 style="font-weight: 700;">{t.privacy.visibilityLevels.privateTitle}</h3>
+        <p class="text-secondary">{t.privacy.visibilityLevels.privateDesc}</p>
+      </div>
+      <div class="card text-center">
+        <div class="feature-icon"><img src="/images/icon-family.svg" alt={t.privacy.visibilityLevels.familyTitle} class="feature-icon__img" /></div>
+        <h3 style="font-weight: 700;">{t.privacy.visibilityLevels.familyTitle}</h3>
+        <p class="text-secondary">{t.privacy.visibilityLevels.familyDesc}</p>
+      </div>
+      <div class="card text-center">
+        <div class="feature-icon"><img src="/images/icon-legacy.svg" alt={t.privacy.visibilityLevels.legacyTitle} class="feature-icon__img" /></div>
+        <h3 style="font-weight: 700;">{t.privacy.visibilityLevels.legacyTitle}</h3>
+        <p class="text-secondary">{t.privacy.visibilityLevels.legacyDesc}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-banner">
+  <div class="container">
+    <h2 style="font-weight: 700;">{t.privacy.cta.title}</h2>
+    <p>{t.privacy.cta.description}</p>
+    <a href="https://app.echo4ever.com/signup" class="btn btn--primary btn--large">{t.privacy.cta.button}</a>
+  </div>
+</section>
+
+<style>
+  .feature-detail {
+    max-width: 100%;
+    margin: 0;
+    text-align: center;
+  }
+  .feature-detail__content {
+    max-width: 100%;
+  }
+  .feature-detail__content p {
+    font-size: clamp(18px, 2vw, 24px);
+    line-height: 1.8;
+  }
+  .feature-detail h2 {
+    margin-bottom: 24px;
+  }
+</style>

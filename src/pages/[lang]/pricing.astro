@@ -1,0 +1,16 @@
+---
+import Base from '../../layouts/Base.astro';
+import PricingPage from '../../components/pages/PricingPage.astro';
+import { getTranslations, getNonDefaultLocales } from '../../i18n/utils';
+
+export function getStaticPaths() {
+  return getNonDefaultLocales().map((lang) => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params;
+const t = getTranslations(lang!);
+---
+
+<Base title={t.meta.pricingTitle} description={t.meta.pricingDescription} lang={lang!}>
+  <PricingPage t={t} lang={lang!} />
+</Base>

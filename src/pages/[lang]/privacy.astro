@@ -1,0 +1,16 @@
+---
+import Base from '../../layouts/Base.astro';
+import PrivacyPage from '../../components/pages/PrivacyPage.astro';
+import { getTranslations, getNonDefaultLocales } from '../../i18n/utils';
+
+export function getStaticPaths() {
+  return getNonDefaultLocales().map((lang) => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params;
+const t = getTranslations(lang!);
+---
+
+<Base title={t.meta.privacyTitle} description={t.meta.privacyDescription} lang={lang!}>
+  <PrivacyPage t={t} lang={lang!} />
+</Base>

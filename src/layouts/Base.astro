@@ -1,21 +1,32 @@
 ---
+import LanguageSwitcher from '../components/LanguageSwitcher.astro';
+import { getTranslations, getDir, getLocalePath } from '../i18n/utils';
+import { defaultLocale } from '../i18n/languages';
+
 interface Props {
   title: string;
   description?: string;
   image?: string;
+  lang?: string;
 }
 
 const { 
   title, 
   description = 'Echo4Ever - Your private digital memory vault. Preserve photos, videos, documents and life stories for the people who matter most.',
-  image = '/images/og-image.jpg'
+  image = '/images/og-image.jpg',
+  lang = 'en'
 } = Astro.props;
 
+const t = getTranslations(lang);
+const dir = getDir(lang);
 const canonicalURL = new URL(Astro.url.pathname, 'https://echo4ever.com');
+
+// Current path without lang prefix for switcher
+const currentPath = Astro.url.pathname;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={lang} dir={dir}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -56,13 +67,35 @@ const canonicalURL = new URL(Astro.url.pathname, 'https://echo4ever.com');
         }
       })();
     </script>
+
+    <!-- Language auto-detect: redirect first-time visitors to their browser locale -->
+    <script is:inline>
+      (function() {
+        if (localStorage.getItem('echo4ever-lang')) return;
+        var supported = ['en','pt','es','fr','de','zh','ja','hi','ar','mi'];
+        var path = window.location.pathname;
+        var isRoot = false;
+        for (var i = 0; i < supported.length; i++) {
+          if (supported[i] !== 'en' && (path.startsWith('/' + supported[i] + '/') || path === '/' + supported[i])) return;
+        }
+        if (path === '/' || path === '/features' || path === '/pricing' || path === '/privacy') isRoot = true;
+        if (!isRoot) return;
+        var browserLang = (navigator.language || '').split('-')[0].toLowerCase();
+        if (browserLang && browserLang !== 'en' && supported.indexOf(browserLang) !== -1) {
+          localStorage.setItem('echo4ever-lang', browserLang);
+          window.location.href = '/' + browserLang + (path === '/' ? '' : path);
+        } else {
+          localStorage.setItem('echo4ever-lang', 'en');
+        }
+      })();
+    </script>
   </head>
   <body>
     <img src="/nautilus-blueprint.jpg" alt="" class="watermark" aria-hidden="true" />
 
     <header class="site-header">
       <div class="container site-header__inner">
-        <a href="/" class="site-logo">
+        <a href={getLocalePath('/', lang)} class="site-logo">
           <img src="/images/logo.png" alt="Echo4Ever" class="site-logo__img" />
         </a>
         <button class="hamburger" id="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
@@ -72,17 +105,18 @@ const canonicalURL = new URL(Astro.url.pathname, 'https://echo4ever.com');
         </button>
         <nav class="site-nav" id="site-nav">
           <div class="site-nav__links">
-            <a href="/features">Features</a>
-            <a href="/pricing">Pricing</a>
-            <a href="/privacy">Privacy</a>
+            <a href={getLocalePath('/features', lang)}>{t.nav.features}</a>
+            <a href={getLocalePath('/pricing', lang)}>{t.nav.pricing}</a>
+            <a href={getLocalePath('/privacy', lang)}>{t.nav.privacy}</a>
           </div>
-          <a href="https://app.echo4ever.com" class="btn btn--primary btn--nav">Login to Your Echo4Ever Portal</a>
+          <a href="https://app.echo4ever.com" class="btn btn--primary btn--nav">{t.nav.login}</a>
+          <LanguageSwitcher lang={lang} currentPath={currentPath} />
         </nav>
         <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
           <span class="theme-toggle__track">
             <span class="theme-toggle__thumb"></span>
           </span>
-          <span class="theme-toggle__label" id="theme-label">Dark Mode</span>
+          <span class="theme-toggle__label" id="theme-label" data-dark={t.theme.dark} data-light={t.theme.light}>{t.theme.dark}</span>
         </button>
       </div>
     </header>
@@ -96,29 +130,29 @@ const canonicalURL = new URL(Astro.url.pathname, 'https://echo4ever.com');
 
         <!-- Top section: tagline -->
         <div class="site-footer__top">
-          <p class="site-footer__tagline">Preserving your digital legacy through beautifully curated archives of photography, voice recordings and historical documents - fostering deep connections for generations to come.</p>
+          <p class="site-footer__tagline">{t.footer.tagline}</p>
         </div>
 
         <!-- Links row -->
         <div class="site-footer__links">
           <div>
-            <h4>Product</h4>
-            <a href="/features">Features</a>
-            <a href="/pricing">Pricing</a>
-            <a href="/privacy">Privacy</a>
+            <h4>{t.footer.product}</h4>
+            <a href={getLocalePath('/features', lang)}>{t.nav.features}</a>
+            <a href={getLocalePath('/pricing', lang)}>{t.nav.pricing}</a>
+            <a href={getLocalePath('/privacy', lang)}>{t.nav.privacy}</a>
           </div>
           <div>
-            <h4>Legal</h4>
-            <a href="/Terms%20of%20Service%20-%20Echo4ever.pdf" target="_blank">Terms of Service</a>
-            <a href="/Privacy%20Policy%20-Echo4ever.pdf" target="_blank">Privacy Policy</a>
+            <h4>{t.footer.legal}</h4>
+            <a href="/Terms%20of%20Service%20-%20Echo4ever.pdf" target="_blank">{t.footer.termsOfService}</a>
+            <a href="/Privacy%20Policy%20-Echo4ever.pdf" target="_blank">{t.footer.privacyPolicy}</a>
           </div>
           <div>
-            <h4>Account</h4>
-            <a href="https://app.echo4ever.com">Sign In</a>
-            <a href="https://app.echo4ever.com/signup">Create Account</a>
+            <h4>{t.footer.account}</h4>
+            <a href="https://app.echo4ever.com">{t.footer.signIn}</a>
+            <a href="https://app.echo4ever.com/signup">{t.footer.createAccount}</a>
           </div>
           <div>
-            <h4>Contact</h4>
+            <h4>{t.footer.contact}</h4>
             <a href="mailto:contact@echo4ever.com">contact@echo4ever.com</a>
           </div>
         </div>
@@ -130,7 +164,7 @@ const canonicalURL = new URL(Astro.url.pathname, 'https://echo4ever.com');
 
         <!-- Copyright -->
         <div class="site-footer__bottom">
-          <p class="text-secondary">&copy; {new Date().getFullYear()} Echo4Ever. All rights reserved.</p>
+          <p class="text-secondary">&copy; {new Date().getFullYear()} {t.footer.copyright}</p>
         </div>
       </div>
     </footer>
@@ -154,7 +188,9 @@ const canonicalURL = new URL(Astro.url.pathname, 'https://echo4ever.com');
       function updateLabel() {
         const current = document.documentElement.getAttribute('data-theme');
         const isDark = current === 'dark' || (!current && window.matchMedia('(prefers-color-scheme: dark)').matches);
-        if (themeLabel) themeLabel.textContent = isDark ? 'Light Mode' : 'Dark Mode';
+        const darkLabel = themeLabel?.getAttribute('data-dark') || 'Dark Mode';
+        const lightLabel = themeLabel?.getAttribute('data-light') || 'Light Mode';
+        if (themeLabel) themeLabel.textContent = isDark ? lightLabel : darkLabel;
       }
 
       updateLabel();

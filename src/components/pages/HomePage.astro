@@ -1,0 +1,161 @@
+---
+import type { Translations } from '../i18n/translations/en';
+
+interface Props {
+  t: Translations;
+  lang: string;
+}
+
+const { t, lang } = Astro.props;
+---
+
+<!-- Structured Data -->
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Echo4Ever",
+  "url": "https://echo4ever.com",
+  "description": "Private digital memory vault. Preserve photos, videos, documents and life stories for the people who matter most.",
+  "applicationCategory": "LifestyleApplication",
+  "operatingSystem": "Web",
+  "offers": {
+    "@type": "AggregateOffer",
+    "lowPrice": "16.99",
+    "highPrice": "35.99",
+    "priceCurrency": "USD",
+    "offerCount": "3"
+  },
+  "provider": {
+    "@type": "Organization",
+    "name": "Echo4Ever",
+    "url": "https://echo4ever.com",
+    "logo": "https://echo4ever.com/images/logo.png",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "email": "contact@echo4ever.com",
+      "contactType": "customer support"
+    }
+  }
+})} />
+
+<!-- Hero -->
+<section class="hero">
+  <div class="container">
+    <h1 style="font-size: clamp(36px, 8vw, 80px); font-weight: 700;" set:html={t.home.hero.title} />
+    <p>{t.home.hero.description}</p>
+    <p class="text-secondary" style="margin: 0 auto 24px; font-size: var(--font-size-subheading);">{t.home.hero.subDescription}</p>
+    <div class="hero__actions">
+      <a href={lang === 'en' ? '/features' : `/${lang}/features`} class="btn btn--outline btn--large">{t.home.hero.button}</a>
+    </div>
+  </div>
+  <div class="hero__image">
+    <img src="/images/couple-walk.jpg" alt="A beautifully curated archive of memories and photographs" loading="eager" />
+  </div>
+</section>
+
+<!-- 6 Features Overview -->
+<section class="section section--alt">
+  <div class="container">
+    <h2 class="text-center" style="font-weight: 700;">{t.home.features.title}</h2>
+    <p class="text-center text-secondary" style="max-width: 560px; margin: 0 auto 48px;">{t.home.features.subtitle}</p>
+    <div class="grid grid--3">
+      <div class="card card--feature">
+        <div class="feature-icon"><img src="/images/Life%20story.png" alt={t.home.features.lifeStory} class="feature-icon__img" /></div>
+        <h3>{t.home.features.lifeStory}</h3>
+        <p class="text-secondary">{t.home.features.lifeStoryDesc}</p>
+      </div>
+      <div class="card card--feature">
+        <div class="feature-icon"><img src="/images/Family%20tree.png" alt={t.home.features.familyTree} class="feature-icon__img" /></div>
+        <h3>{t.home.features.familyTree}</h3>
+        <p class="text-secondary">{t.home.features.familyTreeDesc}</p>
+      </div>
+      <div class="card card--feature">
+        <div class="feature-icon"><img src="/images/Photogrpahs.png" alt={t.home.features.photographs} class="feature-icon__img" /></div>
+        <h3>{t.home.features.photographs}</h3>
+        <p class="text-secondary">{t.home.features.photographsDesc}</p>
+      </div>
+      <div class="card card--feature">
+        <div class="feature-icon"><img src="/images/Video.png" alt={t.home.features.videosAudio} class="feature-icon__img" /></div>
+        <h3>{t.home.features.videosAudio}</h3>
+        <p class="text-secondary">{t.home.features.videosAudioDesc}</p>
+      </div>
+      <div class="card card--feature">
+        <div class="feature-icon"><img src="/images/Documents.jpg" alt={t.home.features.documents} class="feature-icon__img" /></div>
+        <h3>{t.home.features.documents}</h3>
+        <p class="text-secondary">{t.home.features.documentsDesc}</p>
+      </div>
+      <div class="card card--feature">
+        <div class="feature-icon"><img src="/images/Clocks.png" alt={t.home.features.timeCapsules} class="feature-icon__img" /></div>
+        <h3>{t.home.features.timeCapsules}</h3>
+        <p class="text-secondary">{t.home.features.timeCapsulesDesc}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- How It Works -->
+<section class="section">
+  <div class="container">
+    <h2 class="text-center" style="font-weight: 700;">{t.home.howItWorks.title}</h2>
+    <p class="text-center text-secondary" style="max-width: 600px; margin: 0 auto 48px;">{t.home.howItWorks.subtitle}</p>
+    <div class="grid grid--3">
+      <div class="card text-center">
+        <h3 style="font-weight: 700;">{t.home.howItWorks.createTitle}</h3>
+        <p class="text-secondary">{t.home.howItWorks.createDesc}</p>
+      </div>
+      <div class="card text-center">
+        <h3 style="font-weight: 700;">{t.home.howItWorks.shareTitle}</h3>
+        <p class="text-secondary">{t.home.howItWorks.shareDesc}</p>
+      </div>
+      <div class="card text-center">
+        <h3 style="font-weight: 700;">{t.home.howItWorks.protectTitle}</h3>
+        <p class="text-secondary">{t.home.howItWorks.protectDesc}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Privacy Promise -->
+<section class="section section--alt">
+  <div class="container text-center">
+    <h2 style="font-weight: 700;">{t.home.privacyPromise.title}</h2>
+    <p class="text-secondary" style="max-width: 600px; margin: 0 auto 32px;">{t.home.privacyPromise.subtitle}</p>
+    <div class="grid grid--3">
+      <div class="card text-center">
+        <div class="feature-icon"><img src="/images/icon-private.svg" alt={t.home.privacyPromise.privateTitle} class="feature-icon__img" /></div>
+        <h3 style="font-weight: 700;">{t.home.privacyPromise.privateTitle}</h3>
+        <p class="text-secondary">{t.home.privacyPromise.privateDesc}</p>
+      </div>
+      <div class="card text-center">
+        <div class="feature-icon"><img src="/images/icon-family.svg" alt={t.home.privacyPromise.familyTitle} class="feature-icon__img" /></div>
+        <h3 style="font-weight: 700;">{t.home.privacyPromise.familyTitle}</h3>
+        <p class="text-secondary">{t.home.privacyPromise.familyDesc}</p>
+      </div>
+      <div class="card text-center">
+        <div class="feature-icon"><img src="/images/icon-legacy.svg" alt={t.home.privacyPromise.legacyTitle} class="feature-icon__img" /></div>
+        <h3 style="font-weight: 700;">{t.home.privacyPromise.legacyTitle}</h3>
+        <p class="text-secondary">{t.home.privacyPromise.legacyDesc}</p>
+      </div>
+    </div>
+    <div style="margin-top: 32px;">
+      <a href={lang === 'en' ? '/privacy' : `/${lang}/privacy`} class="btn btn--outline">{t.home.privacyPromise.button}</a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-banner">
+  <div class="container cta-banner__inner">
+    <div class="cta-banner__image">
+      <img src="/images/Baby%20feet.png" alt="Preserving family memories for generations" loading="lazy" />
+    </div>
+    <div class="cta-banner__content">
+      <h2>{t.home.cta.title}</h2>
+      <p>{t.home.cta.description}</p>
+      <a href="https://app.echo4ever.com/signup" class="btn btn--primary btn--large">{t.home.cta.button}</a>
+    </div>
+    <div class="cta-banner__image">
+      <img src="/images/Graduation.png" alt="A curated archive of memories" loading="lazy" />
+    </div>
+  </div>
+</section>

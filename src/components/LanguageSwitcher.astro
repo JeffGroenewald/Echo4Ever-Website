@@ -1,0 +1,94 @@
+---
+import { languages, defaultLocale } from '../i18n/languages';
+import type { Locale } from '../i18n/languages';
+import { getTranslations } from '../i18n/utils';
+
+interface Props {
+  lang: string;
+  currentPath: string;
+}
+
+const { lang, currentPath } = Astro.props;
+const t = getTranslations(lang);
+
+// Build path for each locale
+function getPathForLocale(locale: string) {
+  // Strip current lang prefix from path
+  let path = currentPath;
+  for (const l of Object.keys(languages)) {
+    if (l !== defaultLocale && path.startsWith(`/${l}/`)) {
+      path = path.slice(l.length + 1);
+      break;
+    }
+    if (l !== defaultLocale && path === `/${l}`) {
+      path = '/';
+      break;
+    }
+  }
+  if (locale === defaultLocale) return path || '/';
+  return `/${locale}${path === '/' ? '' : path}` || `/${locale}`;
+}
+---
+
+<div class="lang-switcher">
+  <label for="lang-select" class="lang-switcher__label">{t.langSwitcher.label}</label>
+  <select id="lang-select" class="lang-switcher__select">
+    {Object.entries(languages).map(([code, { nativeName }]) => (
+      <option
+        value={getPathForLocale(code)}
+        selected={code === lang}
+        data-lang={code}
+      >
+        {nativeName}
+      </option>
+    ))}
+  </select>
+</div>
+
+<script is:inline>
+  document.getElementById('lang-select')?.addEventListener('change', function() {
+    const selected = this.options[this.selectedIndex];
+    const lang = selected.getAttribute('data-lang');
+    if (lang) localStorage.setItem('echo4ever-lang', lang);
+    window.location.href = this.value;
+  });
+</script>
+
+<style>
+  .lang-switcher {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: 12px;
+  }
+
+  .lang-switcher__label {
+    font-size: 14px;
+    color: var(--color-accent-text);
+    white-space: nowrap;
+  }
+
+  .lang-switcher__select {
+    font-family: var(--font-body);
+    font-size: 14px;
+    padding: 6px 10px;
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 6px;
+    background: rgba(255,255,255,0.1);
+    color: var(--color-accent-text);
+    cursor: pointer;
+    min-width: 100px;
+  }
+
+  .lang-switcher__select option {
+    background: var(--color-bg, #fff);
+    color: var(--color-text, #1E2A2A);
+  }
+
+  @media (max-width: 768px) {
+    .lang-switcher {
+      margin-left: 0;
+      margin-top: 12px;
+    }
+  }
+</style>
