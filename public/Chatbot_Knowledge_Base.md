@@ -234,23 +234,24 @@ All plans include every feature. The only difference is storage space.
 Pricing depends on your country (detected at signup):
 - **New Zealand → NZD**
 - **Australia → AUD**
+- **Europe (EU + UK + wider Europe) → EUR**
 - **All other countries → USD**
 
 #### Monthly Billing
 
-| Plan | Storage | NZD | USD | AUD |
-|---|---|---|---|---|
-| **Foundation** | 25 GB | $28.99/mo | $16.99/mo | $23.99/mo |
-| **Legacy** | 100 GB | $32.99/mo | $17.99/mo | $26.99/mo |
-| **Generations** | 250 GB | $35.99/mo | $23.99/mo | $31.99/mo |
+| Plan | Storage | NZD | USD | AUD | EUR |
+|---|---|---|---|---|---|
+| **Foundation** | 25 GB | $28.99/mo | $16.99/mo | $19.99/mo | €15.99/mo |
+| **Legacy** | 100 GB | $32.99/mo | $17.99/mo | $22.99/mo | €16.99/mo |
+| **Generations** | 250 GB | $35.99/mo | $23.99/mo | $26.99/mo | €22.99/mo |
 
 #### Yearly Billing (Save 20%)
 
-| Plan | Storage | NZD/yr | USD/yr | AUD/yr |
-|---|---|---|---|---|
-| **Foundation** | 25 GB | $347.66 | $203.66 | $287.66 |
-| **Legacy** | 100 GB | $395.66 | $215.66 | $323.66 |
-| **Generations** | 250 GB | $431.66 | $287.66 | $383.66 |
+| Plan | Storage | NZD/yr | USD/yr | AUD/yr | EUR/yr |
+|---|---|---|---|---|---|
+| **Foundation** | 25 GB | $347.66 | $203.66 | $239.66 | €191.66 |
+| **Legacy** | 100 GB | $395.66 | $215.66 | $275.66 | €203.66 |
+| **Generations** | 250 GB | $431.66 | $287.66 | $323.66 | €275.66 |
 
 ### 5.3 Plan Changes
 

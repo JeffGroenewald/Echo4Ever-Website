@@ -1,12 +1,103 @@
 ---
 import Base from '../layouts/Base.astro';
-import PrivacyPage from '../components/pages/PrivacyPage.astro';
-import { getTranslations } from '../i18n/utils';
-
-const lang = 'en';
-const t = getTranslations(lang);
 ---
 
-<Base title={t.meta.privacyTitle} description={t.meta.privacyDescription} lang={lang}>
-  <PrivacyPage t={t} lang={lang} />
+<Base title="Privacy — Echo4Ever" description="Your memories, your rules. How Echo4Ever protects your privacy by design.">
+
+  <section class="page-header">
+    <div class="container">
+      <h1>Your privacy is built in —<br />not bolted on</h1>
+      <p>We designed Echo4Ever around one principle: your memories belong to you.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container" style="max-width: 760px;">
+
+      <div class="privacy-block">
+        <div class="privacy-block__icon">🔒</div>
+        <div>
+          <h3>Private by Default</h3>
+          <p>Every memory you create starts completely private, visible only to you. Sharing is always a conscious choice — never an accident. Nothing is ever shared without your explicit say-so.</p>
+        </div>
+      </div>
+
+      <div class="privacy-block">
+        <div class="privacy-block__icon">👁️</div>
+        <div>
+          <h3>No Public Profiles</h3>
+          <p>There are no public profiles. No social feeds. No algorithms deciding who sees your life. Your archive is yours — and it stays that way.</p>
+        </div>
+      </div>
+
+      <div class="privacy-block">
+        <div class="privacy-block__icon">🔑</div>
+        <div>
+          <h3>You Control Access</h3>
+          <p>You decide who sees what — and when. Family members can only ever see what you've specifically shared with them. Change your mind at any time. Nothing is permanent unless you want it to be.</p>
+        </div>
+      </div>
+
+      <div class="privacy-block">
+        <div class="privacy-block__icon">⏳</div>
+        <div>
+          <h3>Time-Locked Content</h3>
+          <p>Time Capsules stay sealed until the date you set — even from you. They're your way of reaching into the future and being there for the moments that matter.</p>
+        </div>
+      </div>
+
+      <div class="privacy-block">
+        <div class="privacy-block__icon">🛡️</div>
+        <div>
+          <h3>Your Legacy, Protected</h3>
+          <p>Appoint someone you trust as your Heritage Custodian. When the time comes, the memories you've chosen will be gently shared with the people you've named. Nothing more, nothing less. Exactly as you intended.</p>
+        </div>
+      </div>
+
+      <div class="privacy-block">
+        <div class="privacy-block__icon">🏦</div>
+        <div>
+          <h3>Trust, Simplified</h3>
+          <p>Your memories are locked away safely — like a vault that only you hold the key to. We can't see them. We don't sell them. We don't share them. Only the people you choose, at the times you choose, will ever have access.</p>
+          <p><strong>That's not a feature. That's a promise.</strong></p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Three visibility levels -->
+  <section class="section section--alt">
+    <div class="container text-center">
+      <h2>Three levels of visibility</h2>
+      <p class="text-secondary" style="max-width: 500px; margin: 0 auto 40px;">We don't believe in complicated settings or confusing permissions.</p>
+      <div class="grid grid--3">
+        <div class="card text-center">
+          <div class="feature-icon">🔒</div>
+          <h3>Private</h3>
+          <p class="text-secondary">Only you can see it. No one else. Ever.</p>
+        </div>
+        <div class="card text-center">
+          <div class="feature-icon">👨‍👩‍👧</div>
+          <h3>Family</h3>
+          <p class="text-secondary">Shared with the family members you've invited.</p>
+        </div>
+        <div class="card text-center">
+          <div class="feature-icon">⏰</div>
+          <h3>After I'm Gone</h3>
+          <p class="text-secondary">Kept safe until your legacy is activated by your Heritage Custodian.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-banner">
+    <div class="container">
+      <h2>Your memories deserve better</h2>
+      <p>Keep them somewhere private, secure, and entirely under your control.</p>
+      <a href="https://app.echo4ever.com/signup" class="btn btn--primary btn--large">Create Your Archive</a>
+    </div>
+  </section>
+
 </Base>
