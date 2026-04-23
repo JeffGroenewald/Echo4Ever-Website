@@ -110,8 +110,8 @@ const currentPath = Astro.url.pathname;
             <a href={getLocalePath('/privacy', lang)}>{t.nav.privacy}</a>
           </div>
           <a href="https://app.echo4ever.com" class="btn btn--primary btn--nav">{t.nav.login}</a>
-          <LanguageSwitcher lang={lang} currentPath={currentPath} />
         </nav>
+        <LanguageSwitcher lang={lang} currentPath={currentPath} />
         <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
           <span class="theme-toggle__track">
             <span class="theme-toggle__thumb"></span>
@@ -385,18 +385,27 @@ const currentPath = Astro.url.pathname;
         }
 
         .site-logo {
-          order: 2;
+          order: 3;
           flex: 1;
           display: flex;
           justify-content: center;
         }
 
         .site-logo__img {
-          height: 80px;
+          height: 50px;
+        }
+
+        .btn--nav {
+          font-size: 19px !important;
+          padding: 16px 35px !important;
+        }
+
+        :global(.lang-switcher) {
+          order: 2;
         }
 
         .theme-toggle {
-          order: 3;
+          order: 4;
           margin-left: 0;
           margin-top: 0;
         }
@@ -431,30 +440,27 @@ const currentPath = Astro.url.pathname;
           color: var(--color-accent-text);
         }
 
-        .btn--nav {
-          font-size: 19px !important;
-          padding: 16px 35px !important;
-        }
+
 
         .theme-toggle__track {
-          width: 70px;
-          height: 38px;
-          border-radius: 19px;
+          width: 44px;
+          height: 24px;
+          border-radius: 12px;
         }
 
         .theme-toggle__thumb {
-          width: 28px;
-          height: 28px;
-          top: 4px;
-          left: 4px;
+          width: 18px;
+          height: 18px;
+          top: 2px;
+          left: 2px;
         }
 
         [data-theme="dark"] .theme-toggle__thumb {
-          transform: translateX(32px);
+          transform: translateX(20px);
         }
 
         .theme-toggle__label {
-          font-size: 11px;
+          font-size: 9px;
         }
 
         .hamburger span {

@@ -357,7 +357,11 @@ Help is available on: Photographs, Videos & Audio, Documents, Life Story, Family
 - Custom display font (Ogg) for page titles
 - Dark mode toggle available on every page
 - Fully responsive — works on desktop, tablet, and mobile
-- Hamburger navigation menu on mobile devices
+- Mobile header layout: hamburger menu (left), language selector, logo (centre), dark mode toggle (right)
+- Hamburger navigation menu on mobile includes page links (Features, Pricing, Privacy) and Sign In button
+- Desktop header includes full navigation links, Sign In button, language selector, and dark mode toggle
+- Multi-language website with 11 supported languages: English, Spanish, French, German, Portuguese, Chinese, Japanese, Hindi, Arabic, Māori, and Te Reo Māori
+- Language selector available in the header on all devices for instant language switching
 - Nautilus shell watermark as a subtle background motif
 - Empty state watermarks on Family Tree and Timeline to show what the page will look like
 - Branded HTML email templates for all notifications
