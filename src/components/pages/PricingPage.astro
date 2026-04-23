@@ -67,19 +67,13 @@ const { t, lang } = Astro.props;
       </select>
     </div>
 
-    <!-- Billing toggle (hidden until country selected) -->
-    <div class="billing-toggle text-center" id="billing-toggle" style="display: none;">
-      <button class="billing-btn active" data-interval="month">{t.pricing.monthly}</button>
-      <button class="billing-btn" data-interval="year">{t.pricing.yearly} <span class="billing-save">{t.pricing.save}</span></button>
-    </div>
-
     <div class="grid grid--3 pricing-grid" id="pricing-grid" style="display: none;">
 
       <!-- Foundation -->
       <div class="pricing-card">
         <h3>{t.pricing.foundation}</h3>
         <p class="pricing-storage">{t.pricing.storage25}</p>
-        <div class="pricing-price" data-prices='{"NZD":{"month":"28.99","year":"347.66"},"USD":{"month":"16.99","year":"203.66"},"AUD":{"month":"23.99","year":"287.66"}}'>
+        <div class="pricing-price" data-prices='{"NZD":"13.99","USD":"16.99","AUD":"13.99","EUR":"12.99"}'>
         </div>
         <p class="pricing-interval">{t.pricing.perMonth}</p>
         <ul class="pricing-features">
@@ -99,7 +93,7 @@ const { t, lang } = Astro.props;
         <span class="pricing-badge">{t.pricing.mostPopular}</span>
         <h3>{t.pricing.legacy}</h3>
         <p class="pricing-storage">{t.pricing.storage100}</p>
-        <div class="pricing-price" data-prices='{"NZD":{"month":"32.99","year":"395.66"},"USD":{"month":"17.99","year":"215.66"},"AUD":{"month":"26.99","year":"323.66"}}'>
+        <div class="pricing-price" data-prices='{"NZD":"15.99","USD":"17.99","AUD":"15.99","EUR":"13.99"}'>
         </div>
         <p class="pricing-interval">{t.pricing.perMonth}</p>
         <ul class="pricing-features">
@@ -118,7 +112,7 @@ const { t, lang } = Astro.props;
       <div class="pricing-card">
         <h3>{t.pricing.generations}</h3>
         <p class="pricing-storage">{t.pricing.storage250}</p>
-        <div class="pricing-price" data-prices='{"NZD":{"month":"35.99","year":"431.66"},"USD":{"month":"23.99","year":"287.66"},"AUD":{"month":"31.99","year":"383.66"}}'>
+        <div class="pricing-price" data-prices='{"NZD":"19.99","USD":"19.99","AUD":"19.99","EUR":"18.99"}'>
         </div>
         <p class="pricing-interval">{t.pricing.perMonth}</p>
         <ul class="pricing-features">
@@ -152,44 +146,6 @@ const { t, lang } = Astro.props;
 </section>
 
 <style>
-  .billing-toggle {
-    display: flex;
-    justify-content: center;
-    gap: 0;
-    margin-bottom: 24px;
-  }
-  .billing-btn {
-    font-family: var(--font-body);
-    font-size: 24px;
-    font-weight: 600;
-    padding: 20px 48px;
-    border: 1px solid var(--color-border);
-    background: transparent;
-    color: var(--color-text-secondary);
-    cursor: pointer;
-    transition: all 0.2s;
-  }
-  .billing-btn:first-child {
-    border-radius: 40px 0 0 40px;
-  }
-  .billing-btn:last-child {
-    border-radius: 0 40px 40px 0;
-    border-left: none;
-  }
-  .billing-btn.active {
-    background: var(--color-accent);
-    color: var(--color-accent-text);
-    border-color: var(--color-accent);
-  }
-  .billing-save {
-    font-size: 14px;
-    font-weight: 700;
-    background: #d4a04a;
-    color: #ffffff;
-    padding: 4px 12px;
-    border-radius: 12px;
-    margin-left: 8px;
-  }
   .currency-select {
     margin-bottom: 40px;
     display: flex;
@@ -227,13 +183,6 @@ const { t, lang } = Astro.props;
     align-items: start;
   }
   @media (max-width: 768px) {
-    .billing-btn {
-      font-size: 18px;
-      padding: 14px 24px;
-    }
-    .billing-save {
-      font-size: 12px;
-    }
     .currency-select select {
       width: 100%;
       min-width: unset;
@@ -247,53 +196,38 @@ const { t, lang } = Astro.props;
 </style>
 
 <script is:inline>
+  var eurCountries = ['DE','FR','IT','ES','NL','BE','AT','CH','SE','NO','DK','FI','PT','IE','GB'];
+
   function getCurrency(countryCode) {
     if (countryCode === 'NZ') return 'NZD';
     if (countryCode === 'AU') return 'AUD';
+    if (eurCountries.indexOf(countryCode) !== -1) return 'EUR';
     return 'USD';
   }
 
-  var symbols = { NZD: 'NZ$', USD: 'US$', AUD: 'AU$' };
+  var symbols = { NZD: 'NZ$', USD: 'US$', AUD: 'AU$', EUR: '€' };
 
   function updatePrices() {
     var countrySelect = document.getElementById('country');
     var countryCode = countrySelect.value;
     if (!countryCode) return;
 
-    var billingToggle = document.getElementById('billing-toggle');
     var pricingGrid = document.getElementById('pricing-grid');
     var pricingNote = document.getElementById('pricing-note');
-    if (billingToggle) billingToggle.style.display = 'flex';
     if (pricingGrid) pricingGrid.style.display = '';
     if (pricingNote) pricingNote.style.display = '';
 
     var currency = getCurrency(countryCode);
-    var activeBtn = document.querySelector('.billing-btn.active');
-    var interval = activeBtn ? activeBtn.getAttribute('data-interval') : 'month';
     var sym = symbols[currency] || '$';
 
     document.querySelectorAll('.pricing-price').forEach(function(el) {
       var prices = JSON.parse(el.getAttribute('data-prices') || '{}');
-      var price = prices[currency] && prices[currency][interval];
+      var price = prices[currency];
       if (price) {
         el.textContent = sym + price;
       }
     });
-
-    var perMonth = document.documentElement.getAttribute('data-per-month') || 'per month';
-    var perYear = document.documentElement.getAttribute('data-per-year') || 'per year';
-    document.querySelectorAll('.pricing-interval').forEach(function(el) {
-      el.textContent = interval === 'year' ? perYear : perMonth;
-    });
   }
-
-  document.querySelectorAll('.billing-btn').forEach(function(btn) {
-    btn.addEventListener('click', function() {
-      document.querySelectorAll('.billing-btn').forEach(function(b) { b.classList.remove('active'); });
-      btn.classList.add('active');
-      updatePrices();
-    });
-  });
 
   document.getElementById('country')?.addEventListener('change', updatePrices);
 </script>
