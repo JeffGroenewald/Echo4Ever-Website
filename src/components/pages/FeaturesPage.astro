@@ -9,6 +9,16 @@ interface Props {
 const { t, lang } = Astro.props;
 ---
 
+<!-- Breadcrumb structured data -->
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://echo4ever.com" },
+    { "@type": "ListItem", "position": 2, "name": "Features", "item": "https://echo4ever.com/features" }
+  ]
+})} />
+
 <section class="page-header">
   <div class="container">
     <h1 style="font-weight: 700;">{t.features.header.title}</h1>

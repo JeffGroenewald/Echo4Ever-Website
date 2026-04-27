@@ -57,6 +57,28 @@ const currentPath = Astro.url.pathname;
     <meta name="theme-color" content="#2ab5b2" />
     <link rel="sitemap" href="/sitemap-index.xml" />
 
+    <!-- Organization structured data -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Echo4Ever",
+      "url": "https://echo4ever.com",
+      "logo": "https://echo4ever.com/images/logo.png",
+      "description": "Private digital memory vault. Preserve photos, videos, documents and life stories for the people who matter most.",
+      "email": "contact@echo4ever.com",
+      "sameAs": [
+        "https://www.facebook.com/profile.php?id=61580932741019"
+      ]
+    })} />
+
+    <!-- WebSite structured data (enables sitelinks search box) -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Echo4Ever",
+      "url": "https://echo4ever.com"
+    })} />
+
     <script is:inline>
       (function() {
         var saved = localStorage.getItem('theme');

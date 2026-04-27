@@ -9,6 +9,55 @@ interface Props {
 const { t, lang } = Astro.props;
 ---
 
+<!-- Pricing structured data -->
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Echo4Ever",
+  "description": "Private digital memory vault for preserving photos, videos, documents and life stories.",
+  "brand": { "@type": "Brand", "name": "Echo4Ever" },
+  "image": "https://echo4ever.com/images/logo.png",
+  "offers": [
+    {
+      "@type": "Offer",
+      "name": "Foundation",
+      "price": "16.99",
+      "priceCurrency": "USD",
+      "priceValidUntil": "2027-12-31",
+      "availability": "https://schema.org/InStock",
+      "url": "https://echo4ever.com/pricing"
+    },
+    {
+      "@type": "Offer",
+      "name": "Legacy",
+      "price": "17.99",
+      "priceCurrency": "USD",
+      "priceValidUntil": "2027-12-31",
+      "availability": "https://schema.org/InStock",
+      "url": "https://echo4ever.com/pricing"
+    },
+    {
+      "@type": "Offer",
+      "name": "Generations",
+      "price": "19.99",
+      "priceCurrency": "USD",
+      "priceValidUntil": "2027-12-31",
+      "availability": "https://schema.org/InStock",
+      "url": "https://echo4ever.com/pricing"
+    }
+  ]
+})} />
+
+<!-- Breadcrumb structured data -->
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://echo4ever.com" },
+    { "@type": "ListItem", "position": 2, "name": "Pricing", "item": "https://echo4ever.com/pricing" }
+  ]
+})} />
+
 <section class="page-header">
   <div class="container">
     <h1>{t.pricing.header.title}</h1>
