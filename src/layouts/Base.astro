@@ -1,7 +1,7 @@
 ---
 import LanguageSwitcher from '../components/LanguageSwitcher.astro';
 import { getTranslations, getDir, getLocalePath } from '../i18n/utils';
-import { defaultLocale } from '../i18n/languages';
+import { defaultLocale, locales } from '../i18n/languages';
 
 interface Props {
   title: string;
@@ -23,6 +23,11 @@ const canonicalURL = new URL(Astro.url.pathname, 'https://echo4ever.com');
 
 // Current path without lang prefix for switcher
 const currentPath = Astro.url.pathname;
+
+// Compute the base page path (without lang prefix) for hreflang
+const pagePath = currentPath === '/' ? '/' : 
+  locales.filter(l => l !== defaultLocale).reduce((p, l) => 
+    p.replace(new RegExp(`^/${l}(/|$)`), '/'), currentPath);
 ---
 
 <!doctype html>
@@ -34,6 +39,15 @@ const currentPath = Astro.url.pathname;
     <title>{title}</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="canonical" href={canonicalURL.href} />
+
+    <!-- Hreflang tags for multilingual SEO -->
+    {locales.map((locale) => {
+      const href = locale === defaultLocale 
+        ? new URL(pagePath, 'https://echo4ever.com').href
+        : new URL(`/${locale}${pagePath === '/' ? '' : pagePath}`, 'https://echo4ever.com').href;
+      return <link rel="alternate" hreflang={locale} href={href} />;
+    })}
+    <link rel="alternate" hreflang="x-default" href={new URL(pagePath, 'https://echo4ever.com').href} />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
