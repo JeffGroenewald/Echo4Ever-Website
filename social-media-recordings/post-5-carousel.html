@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #111; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+  .slide {
+    width: 1080px;
+    height: 1080px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 100px;
+    background: linear-gradient(160deg, #0d1b2a 0%, #1b2838 40%, #0d1b2a 100%);
+    margin: 20px auto;
+    position: relative;
+    overflow: hidden;
+    page-break-after: always;
+  }
+  .slide::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: url('../../public/images/nautilus-blueprint.jpg') center/cover no-repeat;
+    opacity: 0.04;
+  }
+  .slide::after {
+    content: '';
+    position: absolute;
+    top: -50%; left: -50%;
+    width: 200%; height: 200%;
+    background: radial-gradient(ellipse at 30% 20%, rgba(126, 184, 218, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 80%, rgba(78, 150, 130, 0.06) 0%, transparent 50%);
+  }
+  .content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+  }
+  .text {
+    color: #fff;
+    font-size: 52px;
+    font-weight: 600;
+    line-height: 1.5;
+    letter-spacing: -0.5px;
+  }
+  .slide-1 .text { font-size: 58px; font-weight: 700; }
+  .slide-6 .text { font-size: 50px; font-style: italic; color: #c8dce8; }
+  .slide-7 .text { font-size: 44px; }
+  .cta { color: #7eb8da; font-weight: 700; display: block; margin-top: 40px; font-style: normal; font-size: 48px; }
+  .logo {
+    position: absolute;
+    bottom: 45px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .logo img {
+    height: 40px;
+    opacity: 0.6;
+  }
+  .logo-text {
+    font-size: 18px;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  .slide-number {
+    position: absolute;
+    top: 45px;
+    right: 55px;
+    font-size: 16px;
+    color: rgba(255,255,255,0.2);
+    z-index: 2;
+  }
+  .accent-line {
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, #7eb8da, #4e9682);
+    margin: 30px auto;
+    border-radius: 2px;
+  }
+  h2 { color: #aaa; text-align: center; margin: 40px 0 0; font-size: 14px; text-transform: uppercase; letter-spacing: 3px; }
+</style>
+</head>
+<body>
+
+<h2>POST 5 — "Time Capsule" — Screenshot each slide</h2>
+
+<div class="slide slide-1">
+  <div class="slide-number">1/7</div>
+  <div class="content">
+    <div class="text">I sealed a message my son can't open for 12 years.</div>
+    <div class="accent-line"></div>
+  </div>
+  <div class="logo"><img src="../../public/images/logo.png" alt=""><span class="logo-text">Echo4ever</span></div>
+</div>
+
+<div class="slide slide-2">
+  <div class="slide-number">2/7</div>
+  <div class="content">
+    <div class="text">Echo4Ever has a feature called Time Capsules.<br><br>You seal a memory and set when it unlocks.</div>
+  </div>
+  <div class="logo"><img src="../../public/images/logo.png" alt=""><span class="logo-text">Echo4ever</span></div>
+</div>
+
+<div class="slide slide-3">
+  <div class="slide-number">3/7</div>
+  <div class="content">
+    <div class="text">I recorded a video message for my son's 18th birthday.<br><br>December 2037.</div>
+  </div>
+  <div class="logo"><img src="../../public/images/logo.png" alt=""><span class="logo-text">Echo4ever</span></div>
+</div>
+
+<div class="slide slide-4">
+  <div class="slide-number">4/7</div>
+  <div class="content">
+    <div class="text">Once it's sealed, nobody can open it.<br><br>Not even me.</div>
+    <div class="accent-line"></div>
+  </div>
+  <div class="logo"><img src="../../public/images/logo.png" alt=""><span class="logo-text">Echo4ever</span></div>
+</div>
+
+<div class="slide slide-5">
+  <div class="slide-number">5/7</div>
+  <div class="content">
+    <div class="text">On that day, he'll get an email.<br><br>He'll hear his dad's voice.</div>
+  </div>
+  <div class="logo"><img src="../../public/images/logo.png" alt=""><span class="logo-text">Echo4ever</span></div>
+</div>
+
+<div class="slide slide-6">
+  <div class="slide-number">6/7</div>
+  <div class="content">
+    <div class="text">Even if I'm not here to say it myself.</div>
+    <div class="accent-line"></div>
+  </div>
+  <div class="logo"><img src="../../public/images/logo.png" alt=""><span class="logo-text">Echo4ever</span></div>
+</div>
+
+<div class="slide slide-7">
+  <div class="slide-number">7/7</div>
+  <div class="content">
+    <div class="text">What would you seal for someone you love?<span class="cta">echo4ever.com</span></div>
+  </div>
+  <div class="logo"><img src="../../public/images/logo.png" alt=""><span class="logo-text">Echo4ever</span></div>
+</div>
+
+</body>
+</html>

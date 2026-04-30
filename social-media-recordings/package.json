@@ -1,0 +1,15 @@
+{
+  "name": "echo4ever-social-media-recordings",
+  "private": true,
+  "scripts": {
+    "record:all": "npx playwright test",
+    "record:script3": "npx playwright test script-3",
+    "record:script4": "npx playwright test script-4",
+    "record:script5": "npx playwright test script-5"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.50.0",
+    "dotenv": "^16.4.0",
+    "tsx": "^4.21.0"
+  }
+}

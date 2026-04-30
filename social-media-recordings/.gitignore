@@ -1,0 +1,4 @@
+.env
+recordings/
+node_modules/
+test-results/
