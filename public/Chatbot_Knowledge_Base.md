@@ -245,8 +245,6 @@ Pricing depends on your country (detected at signup):
 | **Legacy** | 100 GB | $15.99/mo | $17.99/mo | $15.99/mo | €13.99/mo |
 | **Generations** | 250 GB | $19.99/mo | $19.99/mo | $19.99/mo | €18.99/mo |
 
-All plans are billed monthly. There is no yearly billing option.
-
 ### 5.3 Plan Changes
 
 - Upgrade or downgrade at any time from the Upgrade page
@@ -292,11 +290,12 @@ After verifying your email, you'll be guided to nominate a Heritage Custodian. T
 - Write an optional personal note that will be included in their invitation email
 - Skip this step and do it later from the Family Sharing page
 
+You can also designate any existing family member as Heritage Custodian at any time from the Family Sharing page using the "Make Heritage Custodian" button. When you do, they receive a detailed email explaining their HC role and responsibilities.
+
 ### 6.3 Choose Your Plan
 
 Before you can start uploading content, you'll need to choose a subscription plan:
 - View all three plans side by side on the Upgrade page
-- Switch between monthly and yearly billing (save 20% with yearly)
 - Complete payment securely through Stripe
 
 ### 6.4 Start Adding Memories
@@ -317,8 +316,10 @@ Once subscribed, you have full access to all features:
 
 When someone invites you to view their archive:
 1. You receive an email invitation with a personal link
-2. Click the link to create your own Echo4Ever account (or link your existing one)
+2. Click the link to complete the full signup form — your email is pre-populated but editable, and you must also provide your full name, date of birth, country, and password (or link your existing account if you already have one)
 3. Once accepted, you can view the memories they've chosen to share with you
+
+**Heritage Custodian invitations** include a detailed explanation of the HC role, responsibilities, and what Heritage Custodial Mode means. The HC nominee completes the same full signup as any new user — their name, date of birth, and country are entered by the HC themselves (not pre-filled by the inviter), ensuring accurate account information and correct currency display for pricing.
 
 ### 7.2 What Family Members Can See
 
@@ -357,11 +358,7 @@ Help is available on: Photographs, Videos & Audio, Documents, Life Story, Family
 - Custom display font (Ogg) for page titles
 - Dark mode toggle available on every page
 - Fully responsive — works on desktop, tablet, and mobile
-- Mobile header layout: hamburger menu (left), language selector, logo (centre), dark mode toggle (right)
-- Hamburger navigation menu on mobile includes page links (Features, Pricing, Privacy) and Sign In button
-- Desktop header includes full navigation links, Sign In button, language selector, and dark mode toggle
-- Multi-language website with 11 supported languages: English, Spanish, French, German, Portuguese, Chinese, Japanese, Hindi, Arabic, Māori, and Te Reo Māori
-- Language selector available in the header on all devices for instant language switching
+- Hamburger navigation menu on mobile devices
 - Nautilus shell watermark as a subtle background motif
 - Empty state watermarks on Family Tree and Timeline to show what the page will look like
 - Branded HTML email templates for all notifications
