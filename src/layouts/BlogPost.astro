@@ -22,8 +22,6 @@ const formattedUpdated = updatedDate?.toLocaleDateString('en-US', { year: 'numer
     <div class="container">
       <header class="blog-post__header">
         <div class="blog-post__meta">
-          <time datetime={publishDate.toISOString()}>{formattedDate}</time>
-          {updatedDate && <span class="blog-post__updated">(Updated {formattedUpdated})</span>}
           <span class="blog-post__author">by {author}</span>
         </div>
         <h1>{title}</h1>
