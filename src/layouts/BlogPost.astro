@@ -146,6 +146,29 @@ const formattedUpdated = updatedDate?.toLocaleDateString('en-US', { year: 'numer
     opacity: 0.85;
   }
 
+  .blog-post__content :global(table) {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+    font-size: 0.95rem;
+  }
+
+  .blog-post__content :global(th),
+  .blog-post__content :global(td) {
+    border: 1px solid rgba(128, 128, 128, 0.3);
+    padding: 0.6rem 1rem;
+    text-align: left;
+  }
+
+  .blog-post__content :global(th) {
+    background: rgba(42, 181, 178, 0.1);
+    font-weight: 600;
+  }
+
+  .blog-post__content :global(tr:nth-child(even)) {
+    background: rgba(128, 128, 128, 0.05);
+  }
+
   .blog-post__footer {
     margin-top: 3rem;
     padding-top: 2rem;
