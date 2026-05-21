@@ -43,11 +43,11 @@ const pagePath = currentPath === '/' ? '/' :
     <!-- Hreflang tags for multilingual SEO -->
     {locales.map((locale) => {
       const href = locale === defaultLocale 
-        ? new URL(pagePath, 'https://echo4ever.com').href
-        : new URL(`/${locale}${pagePath === '/' ? '' : pagePath}`, 'https://echo4ever.com').href;
+        ? new URL(pagePath.endsWith('/') ? pagePath : pagePath + '/', 'https://echo4ever.com').href
+        : new URL(`/${locale}${pagePath === '/' ? '/' : pagePath.endsWith('/') ? pagePath : pagePath + '/'}`, 'https://echo4ever.com').href;
       return <link rel="alternate" hreflang={locale} href={href} />;
     })}
-    <link rel="alternate" hreflang="x-default" href={new URL(pagePath, 'https://echo4ever.com').href} />
+    <link rel="alternate" hreflang="x-default" href={new URL(pagePath.endsWith('/') ? pagePath : pagePath + '/', 'https://echo4ever.com').href} />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
