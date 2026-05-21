@@ -12,7 +12,7 @@ interface Props {
 
 const { 
   title, 
-  description = 'Echo4Ever - Your private digital memory vault. Preserve photos, videos, documents and life stories for the people who matter most.',
+  description = 'Echo4Ever — Your private digital memory vault. Preserve photos, videos, documents and life stories for the people who matter most. Control who sees them and when.',
   image = '/images/og-image.jpg',
   lang = 'en'
 } = Astro.props;
@@ -144,6 +144,7 @@ const pagePath = currentPath === '/' ? '/' :
             <a href={getLocalePath('/features', lang)}>{t.nav.features}</a>
             <a href={getLocalePath('/pricing', lang)}>{t.nav.pricing}</a>
             <a href={getLocalePath('/privacy', lang)}>{t.nav.privacy}</a>
+            <a href="/blog">Blog</a>
           </div>
           <a href="https://app.echo4ever.com" class="btn btn--primary btn--nav">{t.nav.login}</a>
         </nav>

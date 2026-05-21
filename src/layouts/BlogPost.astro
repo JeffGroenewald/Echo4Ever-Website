@@ -1,0 +1,166 @@
+---
+import Base from './Base.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  publishDate: Date;
+  updatedDate?: Date;
+  author: string;
+  image?: string;
+  imageAlt?: string;
+  tags?: string[];
+}
+
+const { title, description, publishDate, updatedDate, author, image, imageAlt, tags = [] } = Astro.props;
+const formattedDate = publishDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+const formattedUpdated = updatedDate?.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+---
+
+<Base title={`${title} - Echo4Ever Blog`} description={description} image={image} lang="en">
+  <article class="blog-post">
+    <div class="container">
+      <header class="blog-post__header">
+        <div class="blog-post__meta">
+          <time datetime={publishDate.toISOString()}>{formattedDate}</time>
+          {updatedDate && <span class="blog-post__updated">(Updated {formattedUpdated})</span>}
+          <span class="blog-post__author">by {author}</span>
+        </div>
+        <h1>{title}</h1>
+        {tags.length > 0 && (
+          <div class="blog-post__tags">
+            {tags.map(tag => <span class="blog-post__tag">{tag}</span>)}
+          </div>
+        )}
+      </header>
+
+      {image && (
+        <img src={image} alt={imageAlt || title} class="blog-post__hero" />
+      )}
+
+      <div class="blog-post__content prose">
+        <slot />
+      </div>
+
+      <footer class="blog-post__footer">
+        <a href="/blog">&larr; Back to all posts</a>
+      </footer>
+    </div>
+  </article>
+</Base>
+
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": title,
+  "description": description,
+  "author": { "@type": "Organization", "name": author },
+  "publisher": { "@type": "Organization", "name": "Echo4Ever", "logo": { "@type": "ImageObject", "url": "https://echo4ever.com/images/logo.png" } },
+  "datePublished": publishDate.toISOString(),
+  ...(updatedDate && { dateModified: updatedDate.toISOString() }),
+  ...(image && { image: `https://echo4ever.com${image}` }),
+  "mainEntityOfPage": { "@type": "WebPage" }
+})} />
+
+<style>
+  .blog-post {
+    padding: 4rem 0;
+  }
+
+  .blog-post__header {
+    margin-bottom: 2rem;
+  }
+
+  .blog-post__header h1 {
+    font-size: 2.5rem;
+    line-height: 1.2;
+    margin: 0.5rem 0;
+  }
+
+  .blog-post__meta {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.9rem;
+    opacity: 0.7;
+    flex-wrap: wrap;
+  }
+
+  .blog-post__tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-top: 0.75rem;
+  }
+
+  .blog-post__tag {
+    background: var(--color-primary, #2ab5b2);
+    color: #fff;
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+  }
+
+  .blog-post__hero {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+  }
+
+  .blog-post__content {
+    max-width: 720px;
+    line-height: 1.8;
+    font-size: 1.1rem;
+  }
+
+  .blog-post__content :global(h2) {
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.6rem;
+  }
+
+  .blog-post__content :global(h3) {
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+    font-size: 1.3rem;
+  }
+
+  .blog-post__content :global(p) {
+    margin-bottom: 1.25rem;
+  }
+
+  .blog-post__content :global(ul),
+  .blog-post__content :global(ol) {
+    margin-bottom: 1.25rem;
+    padding-left: 1.5rem;
+  }
+
+  .blog-post__content :global(li) {
+    margin-bottom: 0.5rem;
+  }
+
+  .blog-post__content :global(blockquote) {
+    border-left: 4px solid var(--color-primary, #2ab5b2);
+    padding-left: 1rem;
+    margin: 1.5rem 0;
+    font-style: italic;
+    opacity: 0.85;
+  }
+
+  .blog-post__footer {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(128, 128, 128, 0.2);
+  }
+
+  .blog-post__footer a {
+    color: var(--color-primary, #2ab5b2);
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .blog-post__footer a:hover {
+    text-decoration: underline;
+  }
+</style>
