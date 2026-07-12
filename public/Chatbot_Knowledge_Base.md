@@ -198,11 +198,29 @@ There are no public profiles. No social feeds. No algorithms deciding who sees y
 - Database on **Cloudflare D1** (distributed SQLite)
 - Application runs on **Cloudflare Workers** (edge computing — fast worldwide)
 - Frontend served via **Cloudflare Pages** (global CDN)
-- Media files served via pre-signed URLs — never exposed directly
-- All data encrypted in transit (HTTPS everywhere)
+- Media files served via pre-signed URLs (expire after 15 minutes) — never exposed directly
+- All data encrypted in transit (HTTPS everywhere, TLS 1.2 minimum, TLS 1.3 preferred)
+- All files encrypted at rest with AES-256 (automatic via Cloudflare R2 and D1)
+- Most sensitive fields (legacy instructions, Heritage Custodian details, post-death messages) receive additional application-level AES-GCM encryption before being written to the database
 - Admin dashboard protected by **Cloudflare Access (Zero Trust)**
+- Cloudflare WAF with OWASP Core Rule Set blocks SQL injection, cross-site scripting, and known exploit patterns
+- Automatic DDoS protection across the entire Cloudflare network
+- Strict security headers: Content-Security-Policy, X-Frame-Options: DENY, X-Content-Type-Options: nosniff
+- CORS locked to official domain only
+- Tamper-evident audit log records every sensitive action (logins, uploads, deletes, sharing changes, legacy events) without storing personal content in logs
 
-### 4.4 What We Don't Do
+### 4.4 Business Continuity
+
+- Our development and infrastructure partner, **Cinche + Strike**, has full access to all Echo4Ever systems — application code, databases, storage, and hosting accounts
+- If anything were to happen to the founders, Cinche + Strike would manage the platform and ensure continuity of service for all users
+- Echo4Ever is not dependent on any single person — the technical knowledge, credentials, and operational capability are held by a professional development team
+- If Echo4Ever were ever to cease operating, all users and Heritage Custodians would receive minimum 90 days advance written notice
+- During that notice period, full data export functionality would be made available to every account holder and their Heritage Custodian
+- Memorial archives would have exports made available to the designated Curator or Heritage Custodian
+- All files are stored in standard, open formats (JPEG, PNG, MP4, PDF) — there is no proprietary format or lock-in
+- You can request a full data export at any time by contacting contact@echo4ever.com
+
+### 4.5 What We Don't Do
 
 - We cannot see your memories
 - We don't sell your data
@@ -406,6 +424,12 @@ A: Echo4Ever works on any modern web browser — desktop, tablet, or mobile. The
 **Q: Can Echo4Ever staff see my memories?**
 A: No. Your files are stored securely on Cloudflare R2, and we do not access your content. Your memories are yours alone.
 
+**Q: What protection is in place against hacking and data breaches?**
+A: Echo4Ever uses multiple layers of protection: AES-256 encryption at rest, additional AES-GCM encryption on sensitive legacy fields, bcrypt password hashing (cost factor 12), Cloudflare WAF with OWASP rules (blocks SQL injection and XSS), DDoS protection, rate-limited login attempts (10 per 15 minutes per IP), short-lived JWT tokens, presigned URLs for file access (expire after 15 minutes), Zero Trust admin access, and a tamper-evident audit log. The entire platform runs on Cloudflare's enterprise-grade infrastructure.
+
+**Q: What happens to my data if Echo4Ever stops operating?**
+A: Your data is never held hostage. All files are stored in standard open formats (JPEG, PNG, MP4, PDF) with no proprietary lock-in. If Echo4Ever were ever to cease operating, all users and Heritage Custodians would receive minimum 90 days advance written notice with full data export made available. Additionally, our development partner Cinche + Strike has full access to all systems and would manage the platform if anything happened to the founders — so the service is not dependent on any single person. You can also request a full data export at any time by contacting contact@echo4ever.com.
+
 **Q: What happens if I forget my password?**
 A: Click "Forgot password?" on the login page. You'll receive an email with a secure reset link that expires after one hour.
 
@@ -511,5 +535,5 @@ A: Use the Help & Support form at the bottom of the Settings page, or email cont
 
 ---
 
-*Last updated: April 2026*
-*Document version: 1.0*
+*Last updated: July 2026*
+*Document version: 1.1*
