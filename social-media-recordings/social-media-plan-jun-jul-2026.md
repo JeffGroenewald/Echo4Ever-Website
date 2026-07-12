@@ -1,25 +1,26 @@
-# Echo4Ever Social Media Plan — June 25 – July 12, 2026
+# Echo4Ever Social Media Plan — July 13 – July 31, 2026
 
 3 posts per week × 3 weeks = 9 posts
 Platforms: Instagram, Facebook, LinkedIn (distinct versions per platform)
+**Status: ALL 9 POSTS PUBLISHED** (Facebook, Instagram, LinkedIn) — Published Jul 13, 2026
 
 ---
 
 ## QUICK REFERENCE
 
-| # | Date | Theme | Image | IG Format |
-|---|------|-------|-------|-----------|
-| 1 | Wed Jun 25 | Record their voice | `Video.png` | Single image |
-| 2 | Fri Jun 27 | Life Story feature | `Life story.png` | Carousel (7 slides) |
-| 3 | Sun Jun 29 | Scan old photos | `Photogrpahs.png` | Carousel (6 slides) |
-| 4 | Tue Jul 1 | Family Tree | `Family tree.png` | Single image |
-| 5 | Thu Jul 3 | Documents / recipes | `Documents 1.png` | Single image |
-| 6 | Sat Jul 5 | Urgency / start today | `couple-walk.jpg` | Single image |
-| 7 | Tue Jul 8 | Graduation / milestones | `Graduation.png` | Single image |
-| 8 | Thu Jul 10 | Family sharing / baby | `Baby feet.png` | Single image |
-| 9 | Sat Jul 12 | Phone ≠ legacy plan | `Clocks.png` | Carousel (6 slides) |
+| # | Date | Theme | Image | IG Format | Status |
+|---|------|-------|-------|-----------|--------|
+| 1 | Sun Jul 13 | Record their voice | `Video.png` | Single image | ✅ Published |
+| 2 | Tue Jul 15 | Life Story feature | `Life story.png` | Carousel (7 slides) | ✅ Published |
+| 3 | Thu Jul 17 | Scan old photos | `Photogrpahs.png` | Carousel (6 slides) | ✅ Published |
+| 4 | Sun Jul 20 | Family Tree | `Family tree.png` | Single image | ✅ Published |
+| 5 | Tue Jul 22 | Documents / recipes | `Documents 1.png` | Single image | ✅ Published |
+| 6 | Thu Jul 24 | Urgency / start today | `couple-walk.jpg` | Single image | ✅ Published |
+| 7 | Sun Jul 27 | Graduation / milestones | `Graduation.png` | Single image | ✅ Published |
+| 8 | Tue Jul 29 | Family sharing / baby | `Baby feet.png` | Single image | ✅ Published |
+| 9 | Thu Jul 31 | Phone ≠ legacy plan | `Clocks.png` | Carousel (6 slides) | ✅ Published |
 
-All images in `/public/images/`.
+All images in `/public/images/` and `/images/`.
 
 ---
 
