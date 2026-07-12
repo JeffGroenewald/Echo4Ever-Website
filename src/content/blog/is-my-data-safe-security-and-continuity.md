@@ -57,33 +57,36 @@ Echo4Ever was designed security-first because the content we hold — memories, 
 
 ---
 
-## What happens if Echo4Ever ever stops operating?
+## What happens if something happens to the people behind Echo4Ever?
 
-This is one of the most important questions anyone can ask a preservation platform. A vault that disappears when the company does isn't a vault at all. Here's how we address this:
+This is one of the most important questions anyone can ask a preservation platform. A vault that disappears when its founders do isn't a vault at all. Here's how we've made sure that can't happen.
+
+### The platform keeps running — automatically
+
+Our development and infrastructure partner, Cinche + Strike, has full access to every part of Echo4Ever — the application code, databases, file storage, and hosting accounts. If anything were to happen to the founders, Cinche + Strike would take over day-to-day operations and keep the platform running for all users without interruption.
+
+This isn't a theoretical backup plan. The credentials, documentation, and operational capability are already in their hands. Echo4Ever is not dependent on any single person.
+
+### The company continues, not closes
+
+Cinche + Strike would continue to operate Echo4Ever until the business is either sold to a new owner or transferred to existing shareholders. The goal is always continuity of service — not winding down.
+
+This is actually far more than most platforms offer. Large companies like Google, Apple, and Meta don't publish continuity plans at all. When services do shut down (Google+, Vine, Picasa), users typically receive minimal notice and little help. Smaller platforms have been known to lose data outright — Myspace famously lost 12 years of uploaded music during a server migration with no recovery.
+
+Echo4Ever has a named partner, a documented handover plan, and a commitment to keep the lights on.
 
 ### Your data is never held hostage
 
 You can request a full export of all your data at any time by contacting contact@echo4ever.com. We provide your photos, videos, documents, and written content in standard, open formats (JPEG, PNG, MP4, PDF, plain text) — not in any proprietary format. There is no lock-in.
 
-### Business continuity safeguards
-
-- Our development and infrastructure partner, Cinche + Strike, has full access to all Echo4Ever systems — application code, databases, storage, and hosting accounts. If anything were to happen to the founders, Cinche + Strike would manage the platform and ensure continuity of service for all users.
-- This means Echo4Ever is not dependent on any single person. The technical knowledge, credentials, and operational capability are held by a professional development team who can keep the platform running independently.
-
-### If Echo4Ever were to cease operating
-
-- All users and their Heritage Custodians would be given advance written notice (minimum 90 days) before any shutdown.
-- During that notice period, full data export functionality would be made available to every account holder and their nominated Heritage Custodian.
-- Memorial archives (where the account holder has passed away) would have exports made available to the designated Curator or Heritage Custodian.
-
 ### Infrastructure resilience
 
-- Your files are stored on Cloudflare R2 — operated by one of the world's largest and most financially stable infrastructure providers. Even if Echo4Ever (the company) experienced financial difficulties, your data sits on enterprise infrastructure that isn't going anywhere.
+- Your files are stored on Cloudflare R2 — operated by one of the world's largest and most financially stable infrastructure providers. Your data sits on enterprise infrastructure that isn't going anywhere.
 - We don't use proprietary file formats. Your photos are still JPEG. Your videos are still MP4. Your documents are still PDF. There's nothing to "convert" — it's all yours in standard formats.
 
 ### Our commitment
 
-The entire purpose of Echo4Ever is multi-generational preservation. Building a platform that could disappear and take your memories with it would betray that mission. Business continuity planning — including third-party operational backup — is built into how we operate from day one.
+The entire purpose of Echo4Ever is multi-generational preservation. Building a platform that could disappear and take your memories with it would betray that mission. Operational continuity — including a named third-party partner ready to take over — is built into how we operate from day one.
 
 ---
 
@@ -94,8 +97,8 @@ The entire purpose of Echo4Ever is multi-generational preservation. Building a p
 | Hacking / data breach | AES-256 encryption at rest, AES-GCM on sensitive fields, Cloudflare WAF, DDoS protection, Zero Trust admin |
 | Password theft | bcrypt hashing, rate limiting, bot protection, short-lived tokens |
 | Unauthorised access | Presigned URLs, parameterised queries, privacy-by-default, server-side auth on every request |
-| Company disappears | 90-day notice, full data export, open formats, no lock-in |
-| Founder unavailable | Development partner (Cinche + Strike) has full system access and operational capability |
+| Founder unavailable | Development partner (Cinche + Strike) takes over operations until business is sold or transferred |
+| Data portability | Full export at any time in open formats (JPEG, MP4, PDF) — no lock-in |
 | Deletion rights | Full GDPR erasure available at any time |
 
 Your memories deserve a platform that's built to last — and built to prove it.

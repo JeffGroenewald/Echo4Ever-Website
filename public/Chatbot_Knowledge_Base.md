@@ -212,12 +212,11 @@ There are no public profiles. No social feeds. No algorithms deciding who sees y
 ### 4.4 Business Continuity
 
 - Our development and infrastructure partner, **Cinche + Strike**, has full access to all Echo4Ever systems — application code, databases, storage, and hosting accounts
-- If anything were to happen to the founders, Cinche + Strike would manage the platform and ensure continuity of service for all users
-- Echo4Ever is not dependent on any single person — the technical knowledge, credentials, and operational capability are held by a professional development team
-- If Echo4Ever were ever to cease operating, all users and Heritage Custodians would receive minimum 90 days advance written notice
-- During that notice period, full data export functionality would be made available to every account holder and their Heritage Custodian
-- Memorial archives would have exports made available to the designated Curator or Heritage Custodian
-- All files are stored in standard, open formats (JPEG, PNG, MP4, PDF) — there is no proprietary format or lock-in
+- If anything were to happen to the founders, Cinche + Strike would take over day-to-day operations and keep the platform running for all users
+- Cinche + Strike would continue to operate Echo4Ever until the business is either sold to a new owner or transferred to existing shareholders
+- Echo4Ever is not dependent on any single person — the technical knowledge, credentials, and operational capability are already held by a professional development team
+- You can request a full data export at any time — all files are stored in standard, open formats (JPEG, PNG, MP4, PDF) with no proprietary format or lock-in
+- This is more robust than most platforms: large companies like Google, Apple, and Meta don’t publish continuity plans; when services shut down (Google+, Vine, Picasa), users typically receive minimal notice
 - You can request a full data export at any time by contacting contact@echo4ever.com
 
 ### 4.5 What We Don't Do
@@ -427,8 +426,8 @@ A: No. Your files are stored securely on Cloudflare R2, and we do not access you
 **Q: What protection is in place against hacking and data breaches?**
 A: Echo4Ever uses multiple layers of protection: AES-256 encryption at rest, additional AES-GCM encryption on sensitive legacy fields, bcrypt password hashing (cost factor 12), Cloudflare WAF with OWASP rules (blocks SQL injection and XSS), DDoS protection, rate-limited login attempts (10 per 15 minutes per IP), short-lived JWT tokens, presigned URLs for file access (expire after 15 minutes), Zero Trust admin access, and a tamper-evident audit log. The entire platform runs on Cloudflare's enterprise-grade infrastructure.
 
-**Q: What happens to my data if Echo4Ever stops operating?**
-A: Your data is never held hostage. All files are stored in standard open formats (JPEG, PNG, MP4, PDF) with no proprietary lock-in. If Echo4Ever were ever to cease operating, all users and Heritage Custodians would receive minimum 90 days advance written notice with full data export made available. Additionally, our development partner Cinche + Strike has full access to all systems and would manage the platform if anything happened to the founders — so the service is not dependent on any single person. You can also request a full data export at any time by contacting contact@echo4ever.com.
+**Q: What happens to my data if something happens to the people behind Echo4Ever?**
+A: Echo4Ever is not dependent on any single person. Our development partner Cinche + Strike has full access to all systems and would take over day-to-day operations if anything happened to the founders. They would continue to run the platform until the business is sold to a new owner or transferred to existing shareholders — the goal is always continuity, not closure. This is actually more robust than most large platforms, which don’t publish continuity plans at all. You can also request a full data export at any time by contacting contact@echo4ever.com — all files are in standard open formats with no lock-in.
 
 **Q: What happens if I forget my password?**
 A: Click "Forgot password?" on the login page. You'll receive an email with a secure reset link that expires after one hour.
