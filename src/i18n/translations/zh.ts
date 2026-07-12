@@ -4,11 +4,11 @@ const zh: Translations = {
   meta: {
     siteName: "Echo4Ever",
     indexTitle: "Echo4Ever - 您的私人数字记忆保险库",
-    indexDescription: "在私人数字保险库中保存照片、视频、文件和人生故事。控制谁可以查看您的记忆以及何时查看。",
+    indexDescription: "在私人数字保险库中保存照片、视频、文件和人生故事。控制谁可以查看您的记忆以及何时查看。设置时间胶囊、指定遗产管理人，让家族记忆代代相传。月费低至16.99美元起。",
     featuresTitle: "功能 - Echo4Ever",
     featuresDescription: "六种保存记忆的方式：人生故事、家谱、照片、视频与音频、文件和时间胶囊。",
     pricingTitle: "定价 – Echo4Ever",
-    pricingDescription: "简单诚实的定价。三种计划，包含所有功能。选择您需要的存储空间。",
+    pricingDescription: "简单诚实的定价。三种计划，包含所有功能——照片、视频、人生故事、家谱、时间胶囊和遗产规划。选择您需要的存储空间，月费低至16.99美元起。",
     privacyTitle: "隐私 - Echo4Ever",
     privacyDescription: "您的记忆，您的规则。Echo4Ever 如何从设计层面保护您的隐私。",
   },
