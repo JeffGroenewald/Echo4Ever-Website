@@ -12,15 +12,17 @@ const { t, lang } = Astro.props;
 <!-- Pricing structured data -->
 <script type="application/ld+json" set:html={JSON.stringify({
   "@context": "https://schema.org",
-  "@type": "Product",
+  "@type": "SoftwareApplication",
   "name": "Echo4Ever",
   "description": "Private digital memory vault for preserving photos, videos, documents and life stories.",
-  "brand": { "@type": "Brand", "name": "Echo4Ever" },
+  "applicationCategory": "LifestyleApplication",
+  "operatingSystem": "Web",
+  "url": "https://echo4ever.com",
   "image": "https://echo4ever.com/images/logo.png",
   "offers": [
     {
       "@type": "Offer",
-      "name": "Foundation",
+      "name": "Foundation — 25 GB",
       "price": "16.99",
       "priceCurrency": "USD",
       "priceValidUntil": "2027-12-31",
@@ -29,7 +31,7 @@ const { t, lang } = Astro.props;
     },
     {
       "@type": "Offer",
-      "name": "Legacy",
+      "name": "Legacy — 100 GB",
       "price": "17.99",
       "priceCurrency": "USD",
       "priceValidUntil": "2027-12-31",
@@ -38,7 +40,7 @@ const { t, lang } = Astro.props;
     },
     {
       "@type": "Offer",
-      "name": "Generations",
+      "name": "Generations — 250 GB",
       "price": "19.99",
       "priceCurrency": "USD",
       "priceValidUntil": "2027-12-31",
