@@ -86,4 +86,4 @@ Your family's future selves will thank you for the twenty minutes you spend toda
 
 ---
 
-*Echo4Ever is a private digital memory vault that helps you preserve and control your family's most precious memories. [Learn more about how it works](/features) or [see our simple pricing](/pricing).*
+*Echo4Ever is a private digital memory vault that helps you preserve and control your family's most precious memories. [Learn more about how it works](/features/) or [see our simple pricing](/pricing/).*

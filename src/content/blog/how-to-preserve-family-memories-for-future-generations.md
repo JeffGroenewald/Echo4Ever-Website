@@ -112,4 +112,4 @@ Echo4Ever was built specifically for this problem. It gives you:
 
 ---
 
-*Your family's story deserves a proper home. [See all features](/features) or [start preserving today](https://app.echo4ever.com/signup).*
+*Your family's story deserves a proper home. [See all features](/features/) or [start preserving today](https://app.echo4ever.com/signup).*

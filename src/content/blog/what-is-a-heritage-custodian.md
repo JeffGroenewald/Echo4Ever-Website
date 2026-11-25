@@ -108,4 +108,4 @@ It's one of the most meaningful things you can do for your family's future.
 
 ---
 
-*Every Echo4Ever plan includes Heritage Custodian nomination and memorial mode at no extra cost. [Learn more about all features](/features) or [create your account](https://app.echo4ever.com/signup).*
+*Every Echo4Ever plan includes Heritage Custodian nomination and memorial mode at no extra cost. [Learn more about all features](/features/) or [create your account](https://app.echo4ever.com/signup).*

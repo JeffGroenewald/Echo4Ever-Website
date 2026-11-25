@@ -119,4 +119,4 @@ With a plan:
 
 ---
 
-*Echo4Ever gives you a private vault for your memories with built-in legacy planning. Your Heritage Custodian, time capsules, and family sharing are all included in every plan. [See how it works](/features) or [get started today](https://app.echo4ever.com/signup).*
+*Echo4Ever gives you a private vault for your memories with built-in legacy planning. Your Heritage Custodian, time capsules, and family sharing are all included in every plan. [See how it works](/features/) or [get started today](https://app.echo4ever.com/signup).*

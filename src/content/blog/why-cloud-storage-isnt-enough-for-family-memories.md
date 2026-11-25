@@ -108,4 +108,4 @@ The first protects your files. The second preserves your legacy.
 
 ---
 
-*Echo4Ever is a private digital memory vault designed for preservation, not just storage. Every plan includes Life Story, Family Tree, Time Capsules, Heritage Custodian, and family sharing. [See how it's different](/features) or [start your vault today](https://app.echo4ever.com/signup).*
+*Echo4Ever is a private digital memory vault designed for preservation, not just storage. Every plan includes Life Story, Family Tree, Time Capsules, Heritage Custodian, and family sharing. [See how it's different](/features/) or [start your vault today](https://app.echo4ever.com/signup).*

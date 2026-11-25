@@ -8,8 +8,10 @@ export function getTranslations(lang: string) {
 }
 
 export function getLocalePath(path: string, lang: string) {
-  if (lang === defaultLocale) return path;
-  return `/${lang}${path}`;
+  // Link straight to the trailing-slash URL Cloudflare Pages serves, avoiding a 308 redirect.
+  const withSlash = path.endsWith('/') ? path : `${path}/`;
+  if (lang === defaultLocale) return withSlash;
+  return `/${lang}${withSlash}`;
 }
 
 export function getDir(lang: string) {

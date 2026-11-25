@@ -90,4 +90,4 @@ If the answer is "not much" - that's the gap a digital vault fills.
 
 ---
 
-*Echo4Ever is a private digital memory vault with no public profiles, no algorithms, and no social features. Just your memories, preserved for the people who matter most. [See how it works](/features) or [start your vault](https://app.echo4ever.com/signup).*
+*Echo4Ever is a private digital memory vault with no public profiles, no algorithms, and no social features. Just your memories, preserved for the people who matter most. [See how it works](/features/) or [start your vault](https://app.echo4ever.com/signup).*

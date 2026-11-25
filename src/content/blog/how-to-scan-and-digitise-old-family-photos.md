@@ -100,4 +100,4 @@ At that pace, you'll have 250+ photos digitised and preserved within a year - wi
 
 ---
 
-*Once you've scanned your photos, Echo4Ever gives them a permanent home with titles, captions, timeline dates, and family sharing built in. [See how it works](/features) or [get started](https://app.echo4ever.com/signup).*
+*Once you've scanned your photos, Echo4Ever gives them a permanent home with titles, captions, timeline dates, and family sharing built in. [See how it works](/features/) or [get started](https://app.echo4ever.com/signup).*

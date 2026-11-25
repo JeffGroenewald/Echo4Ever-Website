@@ -110,16 +110,17 @@ const pagePath = currentPath === '/' ? '/' :
         if (localStorage.getItem('echo4ever-lang')) return;
         var supported = ['en','pt','es','fr','de','zh','ja','hi','ar','mi'];
         var path = window.location.pathname;
+        var barePath = path.length > 1 ? path.replace(/\/$/, '') : path;
         var isRoot = false;
         for (var i = 0; i < supported.length; i++) {
           if (supported[i] !== 'en' && (path.startsWith('/' + supported[i] + '/') || path === '/' + supported[i])) return;
         }
-        if (path === '/' || path === '/features' || path === '/pricing' || path === '/privacy') isRoot = true;
+        if (barePath === '/' || barePath === '/features' || barePath === '/pricing' || barePath === '/privacy') isRoot = true;
         if (!isRoot) return;
         var browserLang = (navigator.language || '').split('-')[0].toLowerCase();
         if (browserLang && browserLang !== 'en' && supported.indexOf(browserLang) !== -1) {
           localStorage.setItem('echo4ever-lang', browserLang);
-          window.location.href = '/' + browserLang + (path === '/' ? '' : path);
+          window.location.href = '/' + browserLang + (barePath === '/' ? '/' : barePath + '/');
         } else {
           localStorage.setItem('echo4ever-lang', 'en');
         }
@@ -144,7 +145,7 @@ const pagePath = currentPath === '/' ? '/' :
             <a href={getLocalePath('/features', lang)}>{t.nav.features}</a>
             <a href={getLocalePath('/pricing', lang)}>{t.nav.pricing}</a>
             <a href={getLocalePath('/privacy', lang)}>{t.nav.privacy}</a>
-            <a href="/blog">Blog</a>
+            <a href="/blog/">Blog</a>
           </div>
           <a href="https://app.echo4ever.com" class="btn btn--primary btn--nav">{t.nav.login}</a>
         </nav>

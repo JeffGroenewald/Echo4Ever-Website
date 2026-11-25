@@ -103,4 +103,4 @@ The entire purpose of Echo4Ever is multi-generational preservation. Building a p
 
 Your memories deserve a platform that's built to last  - and built to prove it.
 
-→ [Learn more about Echo4Ever's privacy model](/privacy)
+→ [Learn more about Echo4Ever's privacy model](/privacy/)
