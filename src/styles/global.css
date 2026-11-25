@@ -534,11 +534,12 @@ p:last-child {
 .cta-banner__inner {
   display: flex;
   align-items: center;
-  gap: 60px;
+  gap: clamp(24px, 4vw, 60px);
 }
 
 .cta-banner__image {
-  flex: 0 0 380px;
+  flex: 0 1 380px;
+  min-width: 0;
   border-radius: var(--radius-card);
   overflow: hidden;
 }
@@ -552,6 +553,7 @@ p:last-child {
 
 .cta-banner__content {
   flex: 1;
+  min-width: 280px;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -639,6 +641,7 @@ p:last-child {
 
   .cta-banner__content {
     text-align: center;
+    min-width: 0;
   }
 
   .feature-detail--with-image,
