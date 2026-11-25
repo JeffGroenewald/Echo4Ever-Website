@@ -4,6 +4,11 @@ export async function onRequestGet() {
   });
 }
 
+const AI_MODELS = [
+  '@cf/meta/llama-3.1-8b-instruct-fp8',
+  '@cf/meta/llama-3.3-70b-instruct-fp8-fast',
+];
+
 // Rate limit: max requests per IP per window
 const RATE_LIMIT_MAX = 60;        // max 60 requests per hour
 const RATE_LIMIT_WINDOW = 3600;   // per hour (seconds)
@@ -169,9 +174,18 @@ ${kb}`;
       ...sanitised,
     ];
 
-    const response = await env.AI.run('@cf/meta/llama-3.1-8b-instruct', {
-      messages: aiMessages,
-    });
+    // Workers AI retires models periodically; fall through to the next model if one fails.
+    let response;
+    let lastError;
+    for (const model of AI_MODELS) {
+      try {
+        response = await env.AI.run(model, { messages: aiMessages });
+        break;
+      } catch (err) {
+        lastError = err;
+      }
+    }
+    if (!response) throw lastError;
 
     let reply = response.response || "That's a great question! I don't have that specific information, but our team would love to help. Please email us at contact@echo4ever.com and we'll get back to you.";
 
