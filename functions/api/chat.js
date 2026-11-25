@@ -68,8 +68,9 @@ export async function onRequestPost(context) {
 
   // Validate AI binding exists
   if (!env.AI) {
+    console.error('Chat error: no AI binding configured');
     return new Response(
-      JSON.stringify({ reply: 'Our chat assistant is being set up. Please email us at contact@echo4ever.com for help.', debug: 'no-ai-binding' }),
+      JSON.stringify({ reply: 'Our chat assistant is being set up. Please email us at contact@echo4ever.com for help.' }),
       { status: 200, headers }
     );
   }
@@ -206,8 +207,9 @@ ${kb}`;
       { status: 200, headers }
     );
   } catch (error) {
+    console.error('Chat error:', error);
     return new Response(
-      JSON.stringify({ reply: 'I\'m having a little trouble right now. Please try again or email us at contact@echo4ever.com for help.', debug: String(error) }),
+      JSON.stringify({ reply: 'I\'m having a little trouble right now. Please try again or email us at contact@echo4ever.com for help.' }),
       { status: 200, headers }
     );
   }
