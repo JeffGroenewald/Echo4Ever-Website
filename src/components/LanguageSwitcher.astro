@@ -85,7 +85,13 @@ function getPathForLocale(locale: string) {
     color: var(--color-text, #1E2A2A);
   }
 
-  @media (max-width: 768px) {
+  @media (min-width: 1024px) and (max-width: 1599px) {
+    .lang-switcher__label {
+      display: none;
+    }
+  }
+
+  @media (max-width: 1023px) {
     .lang-switcher {
       margin-left: 0;
       margin-top: 0;
