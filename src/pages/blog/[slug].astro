@@ -4,13 +4,65 @@ import BlogPost from '../../layouts/BlogPost.astro';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
+  const slugOf = (p: (typeof posts)[number]) => p.id.replace(/\.md$/, '');
+  const stopwords = new Set(['about', 'after', 'their', 'there', 'these', 'what', 'when', 'where', 'which', 'with', 'your', 'from', 'that', 'this', 'into', 'than', 'they', 'them', 'have', 'more', 'most', 'just', 'every', 'echo4ever', 'guide']);
+  const keywords = (p: (typeof posts)[number]) => new Set(
+    `${p.data.title} ${p.data.description}`.toLowerCase().match(/[a-z]{4,}/g)?.filter((w) => !stopwords.has(w)) ?? []
+  );
+
+  // Pick 3 related posts: shared tags count most, shared title/description words break ties.
+  type Post = (typeof posts)[number];
+  const scored = (post: Post) => {
+    const tags = new Set(post.data.tags ?? []);
+    const words = keywords(post);
+    return posts
+      .filter((other) => other.id !== post.id)
+      .map((other) => {
+        const sharedTags = (other.data.tags ?? []).filter((t) => tags.has(t)).length;
+        const sharedWords = [...keywords(other)].filter((w) => words.has(w)).length;
+        return { other, score: sharedTags * 5 + sharedWords };
+      })
+      .sort((a, b) => b.score - a.score || b.other.data.publishDate.getTime() - a.other.data.publishDate.getTime());
+  };
+  const ranked = new Map(posts.map((p) => [p.id, scored(p)]));
+  const picks = new Map(posts.map((p) => [p.id, ranked.get(p.id)!.slice(0, 3).map((r) => r.other)]));
+
+  // Make sure every post is recommended from at least 2 others, so none is left without internal links.
+  const inbound = () => {
+    const counts = new Map(posts.map((p) => [p.id, 0]));
+    for (const list of picks.values()) for (const p of list) counts.set(p.id, counts.get(p.id)! + 1);
+    return counts;
+  };
+  for (let pass = 0; pass < posts.length; pass++) {
+    const counts = inbound();
+    const needy = posts.filter((p) => counts.get(p.id)! < 2);
+    if (needy.length === 0) break;
+    for (const target of needy) {
+      // Give the 3rd slot of the most relevant host post whose current 3rd pick can spare a link.
+      const host = posts
+        .filter((h) => h.id !== target.id && !picks.get(h.id)!.some((p) => p.id === target.id))
+        .filter((h) => picks.get(h.id)!.length === 3 && counts.get(picks.get(h.id)![2].id)! > 2)
+        .sort((a, b) =>
+          (ranked.get(b.id)!.find((r) => r.other.id === target.id)!.score) -
+          (ranked.get(a.id)!.find((r) => r.other.id === target.id)!.score))[0];
+      if (!host) continue;
+      const list = picks.get(host.id)!;
+      counts.set(list[2].id, counts.get(list[2].id)! - 1);
+      list[2] = target;
+      counts.set(target.id, counts.get(target.id)! + 1);
+    }
+  }
+
+  const relatedFor = (post: Post) =>
+    picks.get(post.id)!.map((other) => ({ slug: slugOf(other), title: other.data.title, description: other.data.description }));
+
   return posts.map((post) => ({
-    params: { slug: post.id.replace(/\.md$/, '') },
-    props: { post },
+    params: { slug: slugOf(post) },
+    props: { post, related: relatedFor(post) },
   }));
 }
 
-const { post } = Astro.props;
+const { post, related } = Astro.props;
 const { Content } = await render(post);
 ---
 
@@ -23,6 +75,7 @@ const { Content } = await render(post);
   image={post.data.image}
   imageAlt={post.data.imageAlt}
   tags={post.data.tags}
+  related={related}
 >
   <Content />
 </BlogPost>
