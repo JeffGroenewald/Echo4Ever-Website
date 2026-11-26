@@ -1,5 +1,5 @@
-# Redirect www to non-www
-https://www.echo4ever.com/* https://echo4ever.com/:splat 301
+# www and pages.dev -> echo4ever.com redirects live in functions/_middleware.js
+# (Cloudflare Pages ignores domain-level rules in this file).
 
 # Redirect old FAQ page to home
 /faq /  301
