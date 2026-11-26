@@ -43,6 +43,7 @@ Pushing to `main` deploys automatically through Cloudflare Pages. Changes are li
 - **Self-host fonts and scripts.** The Content-Security-Policy in `public/_headers` only allows the site's own domain, so third-party files (for example Google Fonts) are blocked. Fonts live in `public/fonts/`.
 - **Resize images before adding them.** Export at about twice the size they are shown at (for example 640px wide for a 320px slot), as JPEG at roughly 80% quality. Aim for under 100 KB each.
 - **The blog and 404 page are English-only.** They don't output hreflang tags, and the language switcher sends other languages to that language's home page.
+- **Blog tags matter.** Each post's "Keep reading" section (built in `src/pages/blog/[slug].astro`) picks 3 related posts by shared `tags`, then by shared words in the title and description. Every post is guaranteed links from at least 2 others. Give new posts tags that overlap with existing ones.
 - **Responsive header:** below 1024px it uses the hamburger menu, between 1024 and 1599px a compact desktop header, and from 1600px the full header. Check new header items in French, which has the longest labels.
 - **Edit text files as UTF-8.** Windows PowerShell 5.1 `Get-Content`/`Set-Content` can corrupt characters such as `✓` and `ā`, so use Node or an editor instead.
 
