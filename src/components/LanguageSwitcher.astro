@@ -25,6 +25,7 @@ function getPathForLocale(locale: string) {
       break;
     }
   }
+  if (path.startsWith('/404')) return locale === defaultLocale ? '/' : `/${locale}/`;
   if (locale === defaultLocale) return path || '/';
   // The blog is English-only, so other languages go to their translated home page.
   if (path.startsWith('/blog')) return `/${locale}/`;
